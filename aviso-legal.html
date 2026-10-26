@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Quién está detrás de antonioblanquez.es: titular, contacto, licencia del código y condiciones de uso de los contenidos." />
+  <meta name="robots" content="index,follow" />
+  <title>Aviso legal — Antonio Blánquez</title>
+  <style>
+    :root{
+      --bg0:#070A14;
+      --bg1:#0b1020;
+      --stroke: rgba(255,255,255,.16);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.58);
+      --shadow: 0 20px 80px rgba(0,0,0,.45);
+      --accent1:#7c3aed;
+      --accent2:#22c55e;
+      --accent3:#06b6d4;
+      --accent4:#f97316;
+      --radius: 26px;
+    }
+
+    *{ box-sizing:border-box; }
+    /* Seguro: si el degradado con attachment:fixed no pinta (Safari de iOS es
+       quisquilloso en páginas largas), el peor caso es este color, no blanco. */
+    html{ background: var(--bg0); }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 10% 5%, rgba(124,58,237,.30), transparent 60%),
+                  radial-gradient(900px 600px at 90% 15%, rgba(6,182,212,.22), transparent 55%),
+                  radial-gradient(1000px 700px at 40% 95%, rgba(34,197,94,.16), transparent 60%),
+                  linear-gradient(160deg, var(--bg0), var(--bg1));
+      background-attachment: fixed;
+      overflow-x:hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .wrap{
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 56px;
+    }
+
+    .volver{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color: var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.22);
+      border-radius:999px;
+      padding:9px 14px;
+      margin-bottom: 22px;
+    }
+    .volver:hover{ color: var(--text); border-color: rgba(255,255,255,.3); }
+
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:110px;
+      background:
+        radial-gradient(800px 120px at 20% 20%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(800px 120px at 70% 10%, rgba(6,182,212,.28), transparent 60%),
+        radial-gradient(800px 120px at 90% 60%, rgba(34,197,94,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .inner{ padding: 30px 30px 26px; position:relative; }
+
+    h1{
+      margin:4px 0 6px;
+      font-size: clamp(26px, 3.4vw, 38px);
+      line-height:1.08;
+      letter-spacing:-0.02em;
+      text-wrap: balance;
+    }
+    .fecha{
+      margin:0 0 4px;
+      color: var(--faint);
+      font-size:13px;
+    }
+    .entradilla{
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.6;
+      max-width: 68ch;
+      margin: 14px 0 0;
+    }
+
+    h2{
+      margin: 32px 0 10px;
+      font-size: 15px;
+      letter-spacing:.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.80);
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    h3{
+      margin: 20px 0 6px;
+      font-size: 16px;
+      color: rgba(255,255,255,.90);
+    }
+    p, li{
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.65;
+      max-width: 72ch;
+    }
+    p{ margin: 0 0 12px; }
+    ul{ margin: 0 0 14px; padding-left: 22px; }
+    li{ margin-bottom: 7px; }
+    strong{ color: rgba(255,255,255,.94); }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em;
+      background: rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:6px;
+      padding: 1px 5px;
+      color: rgba(255,255,255,.88);
+      overflow-wrap: anywhere;
+    }
+    a{ color: #a5b4fc; text-decoration: none; border-bottom: 1px solid rgba(165,180,252,.38); }
+    a:hover{ border-bottom-color: #a5b4fc; }
+
+    .aviso{
+      border:1px solid rgba(249,115,22,.34);
+      background: rgba(249,115,22,.09);
+      border-radius:16px;
+      padding: 14px 16px;
+      margin: 16px 0 18px;
+    }
+    .aviso p:last-child{ margin-bottom:0; }
+
+    .tabla{ overflow-x:auto; margin: 6px 0 16px; }
+    table{
+      border-collapse: collapse;
+      width:100%;
+      min-width: 540px;
+      font-size: 14.5px;
+    }
+    th, td{
+      text-align:left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      line-height:1.5;
+    }
+    th{
+      color: rgba(255,255,255,.86);
+      font-size: 12.5px;
+      letter-spacing:.04em;
+      text-transform: uppercase;
+      border-bottom-color: rgba(255,255,255,.22);
+    }
+    td:first-child{ color: rgba(255,255,255,.92); font-weight:600; white-space:nowrap; }
+
+    .pie{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--faint);
+      font-size: 13px;
+    }
+    .pie nav{ display:flex; gap:14px; flex-wrap:wrap; }
+    .pie a{ color: rgba(255,255,255,.72); border-bottom-color: rgba(255,255,255,.26); }
+    .pie a:hover{ color: var(--text); border-bottom-color: rgba(255,255,255,.7); }
+
+    @media (max-width: 720px){
+      .inner{ padding: 24px 18px 20px; }
+      .wrap{ padding: 22px 16px 44px; }
+      h2{ margin-top: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="volver" href="/">&#8592; antonioblanquez.es</a>
+
+    <article class="card">
+      <div class="inner">
+        <p class="fecha">Última actualización: 13 de octubre de 2026</p>
+        <h1>Aviso legal</h1>
+        <p class="entradilla">
+          Esta página dice quién está detrás de <code>antonioblanquez.es</code> y de los cuatro
+          subdominios que cuelgan de él, en qué condiciones se publican y de quién es cada cosa.
+          Está escrita para que se pueda comprobar: lo que afirma sobre el código se puede leer en
+          GitHub, y lo que afirma sobre los datos está en la
+          <a href="/privacidad.html">política de privacidad</a>.
+        </p>
+
+        <h2>1. Titular del sitio</h2>
+        <ul>
+          <li><strong>Titular:</strong> Antonio Blánquez</li>
+          <li><strong>Localidad:</strong> Zaragoza, España</li>
+          <li><strong>Correo de contacto:</strong> <a href="mailto:ablanquez@gmail.com">ablanquez@gmail.com</a></li>
+          <li><strong>Alojamiento:</strong> Hostinger International Ltd.</li>
+        </ul>
+        <p>
+          Este correo es el canal válido para cualquier asunto relacionado con el sitio: avisos
+          legales, ejercicio de derechos sobre datos personales, errores en los datos publicados o
+          retirada de contenidos.
+        </p>
+
+        <h2>2. Qué es este sitio y qué no es</h2>
+        <p>
+          <code>antonioblanquez.es</code> es el portafolio personal de Antonio Blánquez y el punto
+          de entrada a cuatro aplicaciones web propias, publicadas gratuitamente:
+        </p>
+        <ul>
+          <li><strong>RadiografIA</strong> — <a href="https://radiografia.antonioblanquez.es">radiografia.antonioblanquez.es</a></li>
+          <li><strong>Desplázame</strong> — <a href="https://desplazame.antonioblanquez.es">desplazame.antonioblanquez.es</a></li>
+          <li><strong>ZetaBus</strong> — <a href="https://zetabus.antonioblanquez.es">zetabus.antonioblanquez.es</a></li>
+          <li><strong>Linaje</strong> — <a href="https://linaje.antonioblanquez.es">linaje.antonioblanquez.es</a></li>
+        </ul>
+        <p>
+          <strong>No se vende nada desde este sitio.</strong> No hay tienda, ni pasarela de pago, ni
+          suscripciones, ni registro de usuarios para navegar. Las aplicaciones se ofrecen tal cual,
+          sin coste y sin contrapartida.
+        </p>
+
+        <h2>3. Propiedad intelectual</h2>
+        <h3>El código es abierto</h3>
+        <p>
+          El código fuente de las cuatro aplicaciones está publicado bajo la
+          <strong>licencia Apache 2.0</strong> en los repositorios siguientes, y lo que esa licencia
+          permite es lo que vale — no lo que diga esta página:
+        </p>
+        <ul>
+          <li><a href="https://github.com/ablanquez/radiografia">github.com/ablanquez/radiografia</a></li>
+          <li><a href="https://github.com/ablanquez/desplazame">github.com/ablanquez/desplazame</a></li>
+          <li><a href="https://github.com/ablanquez/zetabus">github.com/ablanquez/zetabus</a></li>
+          <li><a href="https://github.com/ablanquez/linaje">github.com/ablanquez/linaje</a></li>
+        </ul>
+        <h3>Los textos y las marcas no</h3>
+        <p>
+          Los textos, capturas y elementos gráficos propios de este sitio son de su titular. Las
+          marcas, nombres comerciales y logotipos de terceros que aparezcan
+          —administraciones públicas, operadores de transporte, proveedores de datos o de
+          servicios— pertenecen a sus respectivos titulares y se mencionan únicamente para
+          <strong>identificar la fuente de un dato o la procedencia de una función</strong>. Su
+          mención no implica vínculo, patrocinio ni respaldo de ningún tipo.
+        </p>
+
+        <h2>4. Los datos que muestran las aplicaciones</h2>
+        <div class="aviso">
+          <p>
+            <strong>ZetaBus y Desplázame no son servicios oficiales de transporte.</strong> Son
+            visores independientes construidos sobre fuentes públicas. No sustituyen a la
+            información oficial del operador ni de la administración correspondiente, y pueden estar
+            desactualizados, incompletos o equivocados.
+          </p>
+        </div>
+        <p>
+          Lo mismo vale para el resto: el distintivo ambiental que muestra Desplázame es la respuesta
+          de la sede de la DGT en ese momento, no una certificación; los avisos de zona de bajas
+          emisiones avisan, no deciden; y el análisis de RadiografIA es un conjunto de reglas de
+          estilo documentadas, no un veredicto sobre la autoría de un texto.
+        </p>
+        <p>Las condiciones completas de uso están en <a href="/condiciones.html">condiciones del servicio</a>.</p>
+
+        <h2>5. Enlaces a sitios de terceros</h2>
+        <p>
+          Este sitio enlaza a páginas que no controla su titular (repositorios, administraciones,
+          operadores, proveedores de datos). Esos enlaces se ofrecen como referencia y
+          <strong>no suponen revisión ni aprobación de su contenido</strong>. Cada sitio enlazado se
+          rige por sus propias condiciones y su propia política de privacidad.
+        </p>
+
+        <h2>6. Responsabilidad</h2>
+        <p>
+          El sitio y las aplicaciones se publican <strong>tal cual</strong>, sin garantía de
+          disponibilidad, continuidad, ausencia de errores ni exactitud de los datos. El titular no
+          responde de los daños que pudieran derivarse del uso de la información publicada, y en
+          particular de decisiones tomadas confiando en datos de transporte, rutas, tiempos o
+          distintivos ambientales.
+        </p>
+        <p>
+          El titular se reserva el derecho de modificar, suspender o retirar cualquier parte del
+          sitio o de las aplicaciones, en cualquier momento y sin aviso previo.
+        </p>
+
+        <h2>7. Legislación aplicable</h2>
+        <p>
+          Esta relación se rige por la legislación española. Para cualquier controversia serán
+          competentes los juzgados y tribunales que correspondan conforme a la normativa aplicable.
+        </p>
+
+        <h2>8. Cambios en este aviso</h2>
+        <p>
+          Este aviso puede cambiar cuando cambie el sitio. La fecha que figura arriba es la de la
+          última revisión, y es la referencia válida: no se conservan versiones anteriores
+          publicadas.
+        </p>
+        <div class="pie">
+          <nav><span>Aviso legal</span><a href="/privacidad.html">Privacidad</a><a href="/condiciones.html">Condiciones</a><a href="/">Inicio</a></nav>
+          <span>&#169; 2026 Antonio Blánquez</span>
+        </div>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
