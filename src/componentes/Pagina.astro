@@ -1,0 +1,22 @@
+---
+/**
+ * Marco común de la web (Comunes.tsx → Pagina con sitio=true en el modelo de Make).
+ * Cabecera fija con firma, menú y botón de tema; contenido; pie; «Arriba» y barra inferior.
+ * inicio: portada (anclas locales). interna: /identidad y páginas legales (sin «Volver» ni sección marcada).
+ */
+import { navegacion, pie, propietario } from "../datos/contenido"
+import { svg } from "./iconos/svg"
+import { temaBoton } from "../scripts/enLinea"
+
+interface Props {
+  inicio?: boolean
+  interna?: boolean
+}
+const { inicio = false, interna = false } = Astro.props
+// En la portada los enlaces son anclas locales; en las demás páginas van a la portada.
+const base = inicio ? "" : "/"
+// En las páginas de proyecto, «Proyectos» queda siempre marcado.
+const actual = !inicio && !interna ? "proyectos" : undefined
+const proyecto = !inicio && !interna
+---
+<div class="portada"><a class="saltar" href="#contenido" data-name="saltar-al-contenido">Saltar al contenido</a><header class="cabecera" data-name="cabecera">{proyecto && (<a class="volver-cabecera" href="/#proyectos" data-name="volver"><Fragment set:html={svg.volverCabecera} /><span class="sr-only">Volver a proyectos</span></a>)}<a class="nombre" href={inicio ? "#inicio" : "/"} data-name="nombre">{propietario.nombre}</a><nav aria-label="Principal" data-name="navegacion"><button type="button" class="boton-menu" aria-expanded="false" aria-controls="menu" data-name="boton-menu">Menú</button><div class="menu"><ul class="enlaces-fila" id="menu" data-name="lista-navegacion">{navegacion.map((n) => (<li><a href={`${base}#${n.ancla}`} class={n.ancla === "contacto" ? "nav-contacto" : undefined} aria-current={actual === n.ancla ? "true" : undefined}>{n.texto}</a></li>))}</ul></div></nav><button type="button" class="boton-tema" aria-label="Cambiar a tema oscuro" title="Cambiar a tema oscuro" data-name="boton-tema"><Fragment set:html={svg.tema.luna} /></button><script is:inline set:html={temaBoton} /></header><main id="contenido" tabindex="-1" data-name="contenido-principal"><span class="ancla-inicio" id="inicio"></span><slot /></main><footer class="pie" data-name="pie"><p>{pie.copyright}</p><ul class="enlaces-fila">{pie.enlaces.map((e) => (<li><a href={e.href}>{e.texto}</a></li>))}</ul></footer><div class="abajo" data-name="abajo"><div class="arriba" data-name="arriba"><a href="#inicio"><span class="arriba-texto">Arriba</span><Fragment set:html={svg.arriba} /></a></div><nav class="barra-inferior" aria-label="Principal" data-name="barra-inferior"><ul>{navegacion.map((n) => (<li><a href={`${base}#${n.ancla}`} aria-current={actual === n.ancla ? "true" : undefined}><span class="pastilla"><Fragment set:html={svg.barra[n.ancla as keyof typeof svg.barra]} /></span><span class="nombre-barra">{n.texto}</span></a></li>))}</ul></nav></div></div>

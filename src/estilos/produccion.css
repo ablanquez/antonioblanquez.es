@@ -1,0 +1,94 @@
+/* Web real: la página entera es un solo «marco» del modelo de Make.
+   Lo único que cambia frente a index.css (copiado sin tocar de la versión 56):
+   - el marco no lleva el borde de 1 px que lo separaba del lienzo gris del modelo;
+   - fuera del marco no hay lienzo: el fondo del documento es el de la página. */
+body { background: var(--color-fondo); }
+.marco { border: 0; }
+
+/* Decisión 16 (firmada el 29/10/2026). Pantallas de más de 1280 px: las bandas siguen a todo lo ancho y el
+   contenido se queda en los 1120 px que mide a 1280 (1280 − 2 × 80), centrado. Solo crece el margen,
+   así que hasta 1280 px no cambia nada. Cabecera, secciones, pie y «Volver» usan el mismo --margen. */
+@container marco (min-width: 1024px) {
+  .portada { --margen: max(80px, calc((100cqi - 1120px) / 2)); }
+}
+
+/* /identidad en escritorio (prueba pendiente de firma). En el modelo, 21 de los 26 nombres de token
+   se partían en dos o tres líneas, y la celda de las muestras (display: flex) dejaba de ser celda
+   de tabla, así que su línea inferior no llegaba al final de la fila. */
+@container marco (min-width: 1024px) {
+  .sitio.identidad .tabla-colores th[scope='row'] code { white-space: nowrap; overflow-wrap: normal; }
+  .sitio.identidad .tabla-colores td.muestras { display: table-cell; white-space: nowrap; }
+  .sitio.identidad .tabla-colores td.muestras .muestra-tema { display: inline-grid; vertical-align: top; }
+  .sitio.identidad .tabla-colores td.muestras .muestra-tema + .muestra-tema { margin-left: var(--espacio-2); }
+}
+
+/* En el modelo, la regla del lienzo «.marco-figura figcaption» (pie de cada marco) también
+   alcanzaba a los pies de foto de «Más capturas» y les daba 8 px de margen inferior.
+   Se conserva para que la página sea igual que el modelo aprobado. */
+.sitio.proyecto .figura-captura figcaption { margin-bottom: var(--espacio-2); }
+
+/* Páginas legales (aviso legal, privacidad, condiciones) en el marco de la web (prueba pendiente de firma).
+   Mismo patrón que las páginas de proyecto (Decisión 11): banda blanca, columna de lectura de 66
+   caracteres centrada, h2 con raya de 48 × 4 px (aquí en --color-acento) y caja neutra para el resumen. */
+.sitio.legal .portada main > section { background: var(--color-superficie); padding-block: var(--espacio-7); }
+.sitio.legal .portada .columna { max-width: 66ch; margin-inline: auto; box-sizing: border-box; overflow-wrap: break-word; }
+.sitio.legal .portada h1 { font-size: var(--tamano-h1-proyecto); line-height: 1.1; color: var(--color-titulo); }
+.sitio.legal .entradilla { margin-top: var(--espacio-5) !important; font-size: var(--tamano-entradilla); line-height: 1.5; color: var(--color-texto-secundario); }
+.sitio.legal .aviso { margin-top: var(--espacio-5); padding: var(--espacio-6); background: var(--color-caja); border-radius: var(--radio-caja); }
+.sitio.legal .portada h2 { margin: var(--espacio-7) 0 var(--espacio-4); font-size: var(--tamano-h2); line-height: 1.2; color: var(--color-titulo); }
+.sitio.legal .portada h2::before { content: ""; display: block; width: 48px; height: 0; margin-bottom: var(--espacio-4); border-top: 4px solid var(--color-acento); border-radius: var(--radio-raya); }
+.sitio.legal .portada h3 { margin: var(--espacio-6) 0 var(--espacio-2); font-size: var(--tamano-nombre-caja); line-height: 1.3; color: var(--color-titulo); }
+.sitio.legal .portada :is(.columna > p, .aviso p, li) { color: var(--color-texto); }
+.sitio.legal .portada .columna > p + p { margin-top: var(--espacio-4); }
+.sitio.legal .portada .columna ul { list-style: disc; margin: var(--espacio-4) 0 0; padding-left: 1.5em; }
+.sitio.legal .portada .columna li + li { margin-top: var(--espacio-2); }
+.sitio.legal .portada .columna li::marker { color: var(--color-texto-secundario); }
+.sitio.legal code { font-family: var(--fuente-codigo); font-size: 0.9em; }
+.sitio.legal .tabla { margin-top: var(--espacio-4); }
+.sitio.legal table { width: 100%; border-collapse: collapse; font-size: var(--tamano-secundario); line-height: 1.5; }
+.sitio.legal :is(th, td) { padding: var(--espacio-3) var(--espacio-2); border-bottom: 1px solid var(--color-linea); text-align: left; vertical-align: top; }
+.sitio.legal thead th { font-weight: var(--peso-negrita); color: var(--color-texto-secundario); }
+.sitio.legal tbody td:first-child { font-weight: var(--peso-negrita); color: var(--color-titulo); }
+@container marco (max-width: 599px) {
+  .sitio.legal .portada main > section { padding-block: var(--espacio-6); }
+  .sitio.legal .aviso { padding: var(--espacio-5); }
+  /* Tabla como tarjetas, igual que la de /identidad por debajo de 1024 px. */
+  .sitio.legal thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .sitio.legal :is(table, tbody, tr, td) { display: block; }
+  .sitio.legal tr { padding: var(--espacio-4); margin-bottom: var(--espacio-4); background: var(--color-caja); border-radius: var(--radio-caja); }
+  .sitio.legal td { padding: var(--espacio-1) 0; border: 0; }
+  .sitio.legal td:not(:first-child)::before { content: attr(data-titulo); display: block; font-weight: var(--peso-negrita); color: var(--color-texto-secundario); }
+}
+
+/* /identidad: secciones añadidas en la auditoría del 29/10/2026 (familias, pesos, tamaños por corte,
+   estilos de texto, medidas y cortes, curvas, iconos y más piezas). Solo tokens. */
+.sitio.identidad .portada h3 { margin: var(--espacio-6) 0 var(--espacio-4); font-size: var(--tamano-nombre-caja); line-height: 1.3; font-weight: var(--peso-negrita); color: var(--color-titulo); }
+.sitio.identidad .portada h2 + h3 { margin-top: 0; }
+.sitio.identidad .tabla-identidad + h3, .sitio.identidad .lista-tokens + h3 { margin-top: var(--espacio-7); }
+.sitio.identidad .nota-token { display: block; margin-top: var(--espacio-1); font-size: var(--tamano-dominio); line-height: 1.4; color: var(--color-texto-secundario); white-space: normal; }
+.sitio.identidad .muestra-estilo { display: block; color: var(--color-titulo); overflow-wrap: anywhere; }
+.sitio.identidad .nota-seccion { margin: 0 0 var(--espacio-4); font-size: var(--tamano-secundario); line-height: 1.5; color: var(--color-texto-secundario); }
+.sitio.identidad .lista-tokens + .nota-seccion { margin-top: var(--espacio-4); }
+.sitio.identidad .iconos-lista { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--espacio-4); }
+.sitio.identidad .iconos-lista + h3 { margin-top: var(--espacio-7); }
+.sitio.identidad .iconos-lista li { display: grid; justify-items: start; gap: var(--espacio-1); min-width: 0; }
+.sitio.identidad .icono-chip { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin-bottom: var(--espacio-1); border-radius: var(--radio-boton); background: var(--color-caja); color: var(--color-texto); }
+.sitio.identidad .icono-chip svg { width: 24px; height: 24px; }
+.sitio.identidad .icono-chip img { width: 32px; height: 32px; }
+.sitio.identidad .icono-marca { color: var(--color-logo-terceros); }
+.sitio.identidad .icono-nombre { font-size: var(--tamano-secundario); font-weight: var(--peso-negrita); line-height: 1.4; }
+.sitio.identidad .icono-uso { font-size: var(--tamano-dominio); line-height: 1.4; color: var(--color-texto-secundario); }
+.sitio.identidad .pastillas-fila { display: flex; flex-wrap: wrap; gap: var(--espacio-4); }
+.sitio.identidad .pieza[data-name='contacto'] .canal-botones { margin-top: 0; padding-left: 0; }
+.sitio.identidad .pieza button.boton-copiar { cursor: default; }
+.sitio.identidad .arriba-muestra { display: inline-flex; align-items: center; gap: var(--espacio-2); min-height: var(--tactil); padding: 0 11px 0 17px; box-sizing: border-box; background: var(--color-fondo); border: 1px solid var(--color-texto); border-radius: 22px; box-shadow: var(--sombra-boton-flotante); color: var(--color-texto); font-weight: var(--peso-negrita); }
+.sitio.identidad .muestra-foco { outline: var(--foco-ancho) solid var(--color-acento); outline-offset: var(--foco-separacion); }
+.sitio.identidad .iconos-lista li { align-content: start; }
+.sitio.identidad .muestra-degradado { width: fit-content; background: linear-gradient(90deg, var(--color-degradado-inicio), var(--color-degradado-fin)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Correo protegido (utiles/correo.ts): el señuelo no se ve, no se copia y no se lee. */
+.senuelo { display: none !important; }
+
+/* Ronda 2 (WCAG 2.4.7 / 2.4.11): «Saltar al contenido» por encima de la cabecera fija (z-index 20) cuando
+   recibe el foco; si no, queda tapado y no se ve. Sin foco sigue oculto: la página no cambia. */
+.saltar:focus-visible { z-index: 30; }

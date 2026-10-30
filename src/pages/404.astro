@@ -1,0 +1,15 @@
+---
+/** Página 404 (Ronda 3, textos aprobados el 29/10/2026): el diseño de las páginas legales. */
+import Base from "../layouts/Base.astro"
+import Pagina from "../componentes/Pagina.astro"
+import { propietario } from "../datos/contenido"
+---
+<Base titulo={`Página no encontrada | ${propietario.nombre}`} descripcion="Puede que la dirección esté mal escrita o que la página ya no esté." tipo="legal" nombreCapa="pagina-no-encontrada" noIndexar>
+<Pagina interna>
+<section class="banda-legal" data-name="no-encontrada"><div class="columna">
+<h1>Esta página no existe</h1>
+<p class="entradilla">Puede que la dirección esté mal escrita o que la página ya no esté.</p>
+<p><a href="/">Ir a la portada</a></p>
+</div></section>
+</Pagina>
+</Base>

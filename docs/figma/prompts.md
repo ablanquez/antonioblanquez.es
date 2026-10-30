@@ -29,19 +29,24 @@ escritorio 1280 px, tableta 820 px y móvil 390 px.
 
 ## Prompt 0 (Planificar)
 
-Vamos a construir el modelo visual de la web personal de Antonio Blánquez
-(antonioblanquez.es): una portada y una página por proyecto, cada una en
-escritorio (1280 px), tableta (820 px) y móvil (390 px). Es solo un modelo
-visual con datos estáticos: sin backend, sin API, sin almacenamiento. Antes
-del primer prompt de construcción te daré un fichero guidelines.md con el
-contenido literal (textos, proyectos, enlaces), las reglas duras
-(contraste WCAG 2.2 AA, foco visible, enlace «Saltar al contenido»,
-botones de 44 px en tableta y móvil, sin scroll horizontal a 320 px,
-contacto sin formulario, lista de efectos prohibidos) y una base
-provisional de colores, tipografía y orden de secciones que cambiaremos
-después con prompts cortos. Planifica, sin escribir código todavía: qué
-componentes reutilizarás entre la portada y la página de proyecto, cómo
-cambiará cada pantalla entre los tres tamaños y en qué orden construirás.
+(Lanzado el 26/10/2026 con Claude Opus 5.5, esfuerzo «Bajo».)
+
+Vamos a construir el modelo visual de la web personal de Antonio Blánquez (antonioblanquez.es): una portada y una página por cada uno de sus cuatro proyectos, las cuatro con la misma plantilla. Cada pantalla en escritorio (1280 px), tableta (820 px) y móvil (390 px). Es solo un modelo visual con datos estáticos: sin backend, sin API, sin almacenamiento.
+
+Antes del primer prompt de construcción te daré un fichero guidelines.md con:
+- el contenido literal (textos, proyectos, enlaces), que no se reescribe ni se completa: donde falte texto irá [texto pendiente];
+- las reglas duras: contraste WCAG 2.2 AA, foco visible, enlace «Saltar al contenido», enlaces y botones de 44 px en tableta y móvil, sin scroll horizontal a 320 px, contacto sin formulario y una lista de efectos prohibidos;
+- una base provisional de colores, tipografía y orden de secciones que cambiaremos después con prompts cortos.
+
+No añadas nada que no se pida.
+
+Terminado significa: pantallas que se puedan copiar como capas de diseño, con nombres de capa semánticos en español.
+
+Planifica, sin escribir código todavía:
+1. qué componentes reutilizarás entre la portada y la página de proyecto;
+2. cómo cambia cada pantalla entre los tres tamaños;
+3. en qué orden construirás.
+
 Responde en español.
 
 ## Prompt 1 — Portada

@@ -1,0 +1,63 @@
+---
+/** Página de proyecto (PaginaProyecto.tsx del modelo de Make, rama «sitio»; Decisiones 10 y 11). */
+import Base from "../../layouts/Base.astro"
+import Pagina from "../../componentes/Pagina.astro"
+import IconoGlobo from "../../componentes/iconos/IconoGlobo.astro"
+import IconoGitHub from "../../componentes/iconos/IconoGitHub.astro"
+import { svg } from "../../componentes/iconos/svg"
+import { iconosDatos } from "../../componentes/iconos/datos"
+import { imagen, tamanos } from "../../utiles/imagenes"
+import { paginasProyecto, propietario, proyectos, type PaginaProyectoDatos, type Proyecto } from "../../datos/contenido"
+
+export function getStaticPaths() {
+  return proyectos.map((proyecto) => ({ params: { slug: proyecto.slug }, props: { proyecto } }))
+}
+interface Props { proyecto: Proyecto }
+const { proyecto } = Astro.props
+
+const bloquesSitio: { titulo: string; fondo: string; clave: keyof PaginaProyectoDatos["bloques"] }[] = [
+  { titulo: "Por qué existe", fondo: "gris", clave: "queEs" },
+  { titulo: "Decisiones", fondo: "blanco", clave: "decisiones" },
+  { titulo: "Cómo lo comprobé", fondo: "gris", clave: "comprobe" },
+  { titulo: "Lo que no hace", fondo: "blanco", clave: "noHace" },
+  { titulo: "Resultado", fondo: "gris", clave: "resultado" },
+  { titulo: "Qué haría distinto", fondo: "blanco", clave: "distinto" },
+]
+const i = proyectos.findIndex((pr) => pr.slug === proyecto.slug)
+const anterior = proyectos[(i - 1 + proyectos.length) % proyectos.length]
+const siguiente = proyectos[(i + 1) % proyectos.length]
+const pendiente = "[texto pendiente]"
+// SEO (aprobado el 29/10/2026): qué es cada proyecto, con palabras de su propia frase.
+const tituloSeo: Record<string, string> = {
+  radiografia: "rasgos de estilo de los asistentes de IA",
+  desplazame: "cómo ir de un portal a otro en Zaragoza",
+  zetabus: "visor en vivo del autobús urbano de Zaragoza",
+  linaje: "árbol genealógico autoalojado",
+}
+const pagina = paginasProyecto[proyecto.slug] as PaginaProyectoDatos | undefined
+const tecnologias = pagina?.tecnologias ?? []
+const datos = iconosDatos.map((d) => ({ titulo: d.titulo, valor: (pagina?.[d.campo] as string | undefined) ?? pendiente, paths: d.paths }))
+const dominio = new URL(proyecto.enVivo).hostname
+const cifras = pagina?.cifras ?? []
+const parrafos = (clave: keyof PaginaProyectoDatos["bloques"]) => pagina?.bloques[clave] ?? [pendiente]
+// Enlaces a otros sitios: en pestaña nueva, avisado para el lector de pantalla (WCAG, técnica G201).
+const fuera = { target: "_blank", rel: "noopener noreferrer" }
+const raya = `--raya:var(--color-proyecto-${proyecto.slug})`
+const colorProyecto = (slug: string) => `color:var(--color-proyecto-${slug})`
+const flecha = (d: string) => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"></path></svg>`
+const cajas = [
+  { pr: anterior, texto: "Proyecto anterior", clase: "caja-anterior", capa: "proyecto-anterior" },
+  { pr: siguiente, texto: "Proyecto siguiente", clase: "caja-siguiente", capa: "proyecto-siguiente" },
+]
+---
+<Base titulo={`${proyecto.nombre}: ${tituloSeo[proyecto.slug]} | ${propietario.nombre}`} descripcion={proyecto.texto} tipo="proyecto" nombreCapa={`proyecto-${proyecto.slug}`} imagenCompartir={`/imagenes/${proyecto.slug}/compartir.jpg`}>
+<Pagina>
+<section class="entrada" data-name="entrada"><div class="volver" data-name="volver"><a href="/#proyectos"><Fragment set:html={svg.volverPagina} />Volver a proyectos</a></div><div class="composicion" data-name="composicion"><div class="ventana" data-name="ventana-navegador"><div class="ventana-barra" data-name="barra-navegador"><span class="ventana-puntos" aria-hidden="true"><span></span><span></span><span></span></span><span class="ventana-dominio">{dominio}</span></div><div class="composicion-zona" data-name="captura-proyecto"><img class="composicion-escritorio" {...imagen(proyecto.captura.src, tamanos.capturaProyecto)} alt={proyecto.captura.alt} /><div class="marco-movil" data-name="captura-movil"><img {...imagen(`/imagenes/movil-${proyecto.slug}.png`, tamanos.movilProyecto)} alt="" /></div></div></div></div><div class="cabecera-proyecto columna" data-name="presentacion-proyecto"><div class="franja" style={`background:var(--color-proyecto-${proyecto.slug})`} data-name="franja-proyecto"></div><ul class="etiquetas" role="list" aria-label="Tecnologías">{tecnologias.length === 0 ? <li>{pendiente}</li> : tecnologias.map((t) => <li>{t}</li>)}</ul><div class="titulo-con-icono" data-name="titulo-proyecto"><img class="icono" {...imagen(proyecto.icono, "48px")} alt="" width="48" height="48" data-name="icono-proyecto" /><h1 style={colorProyecto(proyecto.slug)}>{proyecto.nombre}</h1></div><dl class="datos-proyecto" aria-label="Datos del proyecto" data-name="datos-proyecto">{datos.map((d) => (<div><dt class="sr-only">{d.titulo}</dt><dd><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{d.paths.map((x) => <path d={x}></path>)}</svg>{d.valor}</dd></div>))}</dl><p class="entradilla">{proyecto.texto}</p><ul class="botones-tarjeta" role="list" data-name="botones-proyecto"><li><a class="boton-primario" href={proyecto.enVivo} {...fuera}><IconoGlobo />{proyecto.etiquetaEnVivo}<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a class="boton-secundario boton-marca" href={proyecto.codigo} {...fuera}><IconoGitHub />Código<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div></section>
+
+{bloquesSitio.map((b) => (<section class={`bloque-sitio fondo-${b.fondo} bloque-${b.clave}`} style={raya} data-name="bloque-proyecto">{b.clave === "noHace" || b.clave === "resultado" ? (<div class={`columna tarjeta-bloque aparece ${b.clave === "resultado" ? "tarjeta-resultado" : "tarjeta-nohace"}`}><h2>{b.titulo}</h2>{parrafos(b.clave).map((t) => <p class="texto">{t}</p>)}</div>) : (<div class="columna"><h2>{b.titulo}</h2>{b.clave === "decisiones" ? (<ol class="lista-decisiones" role="list" data-name="decisiones">{parrafos("decisiones").map((t, n) => (<li class="aparece"><span class="decision-numero" aria-hidden="true">{n + 1}</span><p class="texto">{t}</p></li>))}</ol>) : (<>{b.clave === "comprobe" && (<div class="tarjeta-cifras aparece" data-name="cifras"><ul role="list">{cifras.map((f) => (<li><span class="cifra-valor" style={colorProyecto(proyecto.slug)}>{f.valor}</span><span class="cifra-etiqueta">{f.etiqueta}</span></li>))}</ul></div>)}{parrafos(b.clave).map((t) => <p class="texto aparece">{t}</p>)}</>)}</div>)}</section>))}
+
+<section class="mas-capturas" style={raya} data-name="mas-capturas"><h2>Más capturas</h2><div class="galeria aparece" data-name="galeria"><div class="huecos">{[0, 1].map((n) => { const f = pagina?.masCapturas[n]; return f ? (<figure class="figura-captura" data-name="captura"><div class="hueco"><img {...imagen(f.src, tamanos.galeria)} alt={f.alt} loading="lazy" decoding="async" /></div><figcaption>{f.pie}</figcaption></figure>) : (<div class="hueco" data-name="captura-pendiente">[captura pendiente]</div>) })}</div></div></section>
+
+<section class="otros-proyectos" data-name="otros-proyectos"><h2 class="sr-only" id="t-mas-proyectos">Más proyectos</h2><nav aria-labelledby="t-mas-proyectos"><ul>{cajas.map(({ pr, texto, clase, capa }) => (<li><a class={`caja-proyecto ${clase}`} href={`/proyectos/${pr.slug}`} data-name={capa}><span class="caja-etiqueta">{clase === "caja-anterior" && <Fragment set:html={flecha("M19 12H5m7 7-7-7 7-7")} />}{texto}{clase === "caja-siguiente" && <Fragment set:html={flecha("M5 12h14m-7-7 7 7-7 7")} />}</span><span class="caja-nombre"><img class="icono" {...imagen(pr.icono, "24px")} alt="" width="24" height="24" /><span style={colorProyecto(pr.slug)}>{pr.nombre}</span></span></a></li>))}</ul></nav></section>
+</Pagina>
+</Base>

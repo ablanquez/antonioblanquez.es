@@ -1,0 +1,56 @@
+---
+/** Portada (Portada.tsx del modelo de Make con inicio, conVida y detalles 1-3). */
+import Base from "../layouts/Base.astro"
+import Pagina from "../componentes/Pagina.astro"
+import IconoSobre from "../componentes/iconos/IconoSobre.astro"
+import IconoLinkedIn from "../componentes/iconos/IconoLinkedIn.astro"
+import IconoGitHub from "../componentes/iconos/IconoGitHub.astro"
+import IconoGlobo from "../componentes/iconos/IconoGlobo.astro"
+import IconoDescarga from "../componentes/iconos/IconoDescarga.astro"
+import IconoFlechaFuera from "../componentes/iconos/IconoFlechaFuera.astro"
+import { svg } from "../componentes/iconos/svg"
+import { comoTrabajo, contacto, propietario, proyectos, sobreMi } from "../datos/contenido"
+import { cifrarCorreo, partesCorreo } from "../utiles/correo"
+import { imagen, tamanos } from "../utiles/imagenes"
+
+/** Rótulo de etapa («2007-2012 · Fundación DFA»): los años van en <time>; el texto no cambia. */
+type Trozo = { t: string; anio?: boolean }
+function rotuloEtapa(rotulo: string): Trozo[] {
+  const desde = rotulo.match(/^(Desde )(\d{4})(.*)$/)
+  if (desde) return [{ t: desde[1] }, { t: desde[2], anio: true }, { t: desde[3] }]
+  const m = rotulo.match(/^(\d{4})-(\d{4})(.*)$/)
+  if (!m) return [{ t: rotulo }]
+  return [{ t: m[1], anio: true }, { t: "-" }, { t: m[2], anio: true }, { t: m[3] }]
+}
+
+/** Dirección web que solo puede partir tras la última «/». */
+function partir(texto: string): [string, string] | null {
+  const i = texto.lastIndexOf("/") + 1
+  return i <= 0 ? null : [texto.slice(0, i), texto.slice(i)]
+}
+const c = contacto
+// Enlaces a otros sitios: en pestaña nueva, avisado para el lector de pantalla (WCAG, técnica G201).
+const fuera = { target: "_blank", rel: "noopener noreferrer" }
+// Correo protegido frente a los robots (ver utiles/correo.ts): sin la dirección entera en el HTML.
+const correoCifrado = cifrarCorreo(propietario.email)
+const [correoUsuario, correoDominio] = partesCorreo(propietario.email)
+// SEO (aprobado el 29/10/2026): las dos primeras frases del texto de presentación.
+const descripcionPortada = propietario.fraseLarga.split(". ").slice(0, 2).join(". ") + "."
+// Datos estructurados (Ronda 3): la web es de una persona, con sus perfiles. Sin cargo ni descripción.
+const persona = { "@context": "https://schema.org", "@type": "Person", name: propietario.nombre, url: "https://antonioblanquez.es/", sameAs: [propietario.linkedin, propietario.github] }
+const linkedin = partir(c.linkedin.dato)
+const github = partir(c.github.dato)
+---
+<Base titulo={`${propietario.nombre} | ${propietario.fraseCorta.replace(/\.$/, "")}`} descripcion={descripcionPortada} tipo="inicio" nombreCapa="portada" datosEstructurados={persona}>
+<Pagina inicio>
+<section class="presentacion presentacion-con-foto presentacion-texto presentacion-ordenada" data-name="presentacion"><h1 class="frase-corta">{propietario.fraseCorta}</h1><div class="foto" data-name="foto">[foto pendiente]</div><p class="texto">{propietario.fraseLarga}</p><ul class="botones-tarjeta botones-contacto" data-name="enlaces-contacto"><li><a class="boton-primario" href="#contacto" data-correo={correoCifrado}><IconoSobre />Escríbeme</a></li><li><a class="boton-secundario boton-marca boton-cuadrado" href={propietario.linkedin} {...fuera}><IconoLinkedIn /><span class="sr-only">LinkedIn (se abre en una pestaña nueva)</span></a></li><li><a class="boton-secundario boton-marca boton-cuadrado" href={propietario.github} {...fuera}><IconoGitHub /><span class="sr-only">GitHub (se abre en una pestaña nueva)</span></a></li></ul></section>
+
+<section id="proyectos" aria-labelledby="t-proyectos" data-name="proyectos"><h2 id="t-proyectos">Proyectos</h2><ul class="rejilla">{proyectos.map((pr) => (<li class="tarjeta" style={`border-top:4px solid var(--color-proyecto-${pr.slug})`} data-name="tarjeta-proyecto"><div class="zona-captura" data-name="captura-proyecto"><div class="barra-captura" data-name="barra-proyecto"><img class="icono" {...imagen(pr.icono, "(min-width: 600px) 32px, 24px")} alt="" width="32" height="32" data-name="icono-proyecto" /><h3><a class="enlace-titulo" href={`/proyectos/${pr.slug}`} style={`--color-proyecto:var(--color-proyecto-${pr.slug})`}>{pr.nombre}<Fragment set:html={svg.flechaTarjeta} /></a></h3></div><img class="captura-escritorio" {...imagen(pr.captura.src, tamanos.capturaPortada)} alt={pr.captura.alt} loading="lazy" decoding="async" /><div class="marco-movil" data-name="captura-movil"><img {...imagen(`/imagenes/movil-${pr.slug}.png`, tamanos.movilPortada)} alt="" loading="lazy" decoding="async" /></div></div><p class="texto">{pr.texto}</p><ul class="botones-tarjeta" data-name="botones-proyecto"><li><a class="boton-primario" href={pr.enVivo} {...fuera}><IconoGlobo />{pr.etiquetaEnVivo}<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a class="boton-secundario boton-marca" href={pr.codigo} {...fuera}><IconoGitHub />Código<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></li>))}</ul></section>
+
+<section id="como-trabajo" class="banda" data-name="como-trabajo"><h2>Cómo trabajo</h2><p class="entrada-pasos">{comoTrabajo.entrada}</p><ol class="pasos" role="list">{comoTrabajo.pasos.map((paso, i) => (<li class="paso"><span class="paso-icono"><Fragment set:html={svg.pasos[i]} /></span><div class="paso-texto"><h3>{paso.titulo}</h3><p>{paso.texto}</p></div></li>))}</ol></section>
+
+<section id="sobre-mi" data-name="sobre-mi"><h2>Sobre mí</h2><ol class="linea-tiempo" role="list">{sobreMi.etapas.map((etapa) => (<li class="etapa"><h3><span class="rotulo">{rotuloEtapa(etapa.rotulo).map((t) => t.anio ? <time datetime={t.t}>{t.t}</time> : t.t)}</span></h3><p>{etapa.texto}</p><div class="cifras">{etapa.cifras.map((f) => (<p class="ficha-cifra"><span class="cuerpo"><span class="matiz" aria-hidden={f.matiz ? undefined : "true"}>{f.matiz}</span>{f.matiz && " "}<span class="valor">{f.valor}</span>{" "}<span class="etiqueta">{f.etiqueta}</span></span></p>))}</div></li>))}</ol><div class="tarjeta-cierre">{sobreMi.cierre.map((parrafo) => (<p class="cierre">{parrafo}</p>))}<div class="botones-tarjeta"><a class="boton-secundario boton-marca" href="/cv-antonio-blanquez.pdf" download><IconoDescarga />Descargar CV (PDF)</a></div></div></section>
+
+<section id="contacto" data-name="contacto"><h2 class="sr-only">Contacto</h2><div class="tarjeta-visita"><div class="cuerpo"><div class="visita-quien"><p class="visita-nombre">{c.nombre}</p><div class="visita-foto" aria-hidden="true">[foto]</div><p class="visita-rol">{c.rol}</p><div class="visita-abajo"><p class="visita-lugar">{c.lugar}</p><p class="visita-respuesta">{c.entrada.replace("24 horas", "24 horas")}</p></div></div><ul class="visita-canales" role="list"><li class="canal canal-correo"><div class="canal-fila"><span class="canal-icono"><IconoSobre /></span><span class="canal-texto"><span class="canal-nombre">{c.correo.canal}</span><span class="canal-dato">{correoUsuario}<span class="senuelo">{"-quitar-esto-"}</span>{correoDominio}</span></span></div><div class="canal-botones"><a class="boton-primario" href="#contacto" data-correo={correoCifrado}>{c.correo.escribir}</a><button type="button" class="boton-copiar" data-correo-copiar={correoCifrado} data-copiar={c.correo.copiar} data-copiado={c.correo.copiado} data-anuncio={c.correo.anuncioCopiado} data-fallo={c.correo.fallo}>{c.correo.copiar}</button></div><p class="sr-only" role="status"></p></li><li class="canal"><a class="canal-fila canal-enlace" href={propietario.linkedin} {...fuera}><span class="canal-icono canal-logo"><IconoLinkedIn /></span><span class="canal-texto"><span class="canal-nombre">{c.linkedin.canal}</span><span class="canal-dato">{linkedin ? <>{linkedin[0]}<wbr />{linkedin[1]}</> : c.linkedin.dato}</span></span><span class="sr-only"> (se abre en una pestaña nueva)</span><IconoFlechaFuera /></a></li><li class="canal"><a class="canal-fila canal-enlace" href={propietario.github} {...fuera}><span class="canal-icono canal-logo"><IconoGitHub /></span><span class="canal-texto"><span class="canal-nombre">{c.github.canal}</span><span class="canal-dato">{github ? <>{github[0]}<wbr />{github[1]}</> : c.github.dato}</span></span><span class="sr-only"> (se abre en una pestaña nueva)</span><IconoFlechaFuera /></a></li></ul></div></div></section>
+</Pagina>
+</Base>

@@ -1,0 +1,86 @@
+---
+/**
+ * /identidad: guía de estilo de la web (Identidad.tsx del modelo de Make; Decisión 12), enlazada desde el pie.
+ * Auditada el 29/10/2026 frente a los tipos del formato de tokens del W3C Design Tokens Community Group:
+ * se añaden familias, pesos, tamaños por corte, estilos de texto, medidas, cortes, curvas, iconos y más piezas.
+ */
+import Base from "../layouts/Base.astro"
+import Pagina from "../componentes/Pagina.astro"
+import IconoGlobo from "../componentes/iconos/IconoGlobo.astro"
+import IconoGitHub from "../componentes/iconos/IconoGitHub.astro"
+import IconoLinkedIn from "../componentes/iconos/IconoLinkedIn.astro"
+import IconoSobre from "../componentes/iconos/IconoSobre.astro"
+import IconoDescarga from "../componentes/iconos/IconoDescarga.astro"
+import IconoFlechaFuera from "../componentes/iconos/IconoFlechaFuera.astro"
+import { svg } from "../componentes/iconos/svg"
+import { iconosDatos } from "../componentes/iconos/datos"
+import { comoTrabajo, navegacion, propietario, proyectos } from "../datos/contenido"
+import { colores, cortes, curvas, espacios, estilosTexto, familias, medidas, movimientos, pesos, radios, sombras, tamanosPorCorte } from "../datos/identidad"
+
+const estadosMenu = ["reposo", "hover", "foco", "actual"] as const
+const estadosBarra = ["reposo", "actual"] as const
+const trazo18 = (paths: readonly string[]) => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths.map((d) => `<path d="${d}"></path>`).join("")}</svg>`
+const flechaCaja = (d: string) => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"></path></svg>`
+// Color con el que se pinta cada muestra de «Estilos de texto»: el token, o el del proyecto que nombra.
+const colorMuestra = (color: string, muestra: string) =>
+  color.startsWith("--") ? `var(${color})` : color === "color del proyecto" ? `var(--color-proyecto-${muestra === "ZetaBus" ? "zetabus" : "desplazame"})` : "var(--color-acento)"
+const nombresPasos = ["Lupa", "Pantalla y móvil", "Código", "Lista con marcas", "Paquete con marca", "Escudo con marca"]
+// Iconos de trazo (SVG en línea, mismo juego que lucide): nombre, dónde se usa y el SVG tal cual se pinta.
+const iconosTrazo: { nombre: string; uso: string; svg: string }[] = [
+  ...navegacion.map((n) => ({ nombre: n.texto, uso: "Barra inferior (24 px)", svg: svg.barra[n.ancla as keyof typeof svg.barra] })),
+  ...comoTrabajo.pasos.map((p, i) => ({ nombre: nombresPasos[i], uso: `Paso «${p.titulo}» (24 px)`, svg: svg.pasos[i] })),
+  { nombre: "Luna", uso: "Botón de tema en claro (20 px)", svg: svg.tema.luna },
+  { nombre: "Sol", uso: "Botón de tema en oscuro (20 px)", svg: svg.tema.sol },
+  { nombre: "Flecha arriba", uso: "Botón «Arriba» (20 px)", svg: svg.arriba },
+  { nombre: "Flecha atrás", uso: "«Volver a proyectos» (20 y 24 px)", svg: svg.volverPagina },
+  { nombre: "Flecha a fuera", uso: "Nombre de la tarjeta de proyecto (18-20 px)", svg: svg.flechaTarjeta.replace('class="flecha"', 'width="20" height="20"') },
+  ...iconosDatos.map((d) => ({ nombre: d.titulo, uso: "Línea de datos del proyecto (18 px)", svg: trazo18(d.paths) })),
+  { nombre: "Anterior", uso: "Caja del proyecto anterior (16 px)", svg: flechaCaja("M19 12H5m7 7-7-7 7-7") },
+  { nombre: "Siguiente", uso: "Caja del proyecto siguiente (16 px)", svg: flechaCaja("M5 12h14m-7-7 7 7-7 7") },
+]
+import { imagen } from "../utiles/imagenes"
+---
+<Base titulo={`Identidad visual | ${propietario.nombre}`} descripcion="Colores, tipografía, espacios, esquinas, sombras y movimiento de la web, con sus valores y contrastes." tipo="identidad" nombreCapa="identidad">
+<Pagina interna>
+<section class="banda-identidad cabecera-identidad" data-name="identidad"><div class="columna"><h1>Identidad visual</h1></div></section>
+
+<section class="banda-identidad" data-name="colores"><div class="columna"><h2>Colores</h2><table class="tabla-colores"><thead><tr><th scope="col">Muestra</th><th scope="col">Token</th><th scope="col">Claro</th><th scope="col">Oscuro</th><th scope="col">Uso</th><th scope="col">Contraste</th></tr></thead><tbody>{colores.map((c) => (<tr><td data-titulo="Muestra" class="muestras">{(["claro", "oscuro"] as const).map((tema) => (<span class="muestra-tema"><span data-tema={tema}><span class="muestra" style={`background:var(${c.token})`}></span></span><span class="muestra-etiqueta">{tema === "claro" ? "Claro" : "Oscuro"}</span></span>))}</td><th scope="row" data-titulo="Token"><code>{c.token}</code></th><td data-titulo="Claro"><code>{c.claro}</code></td><td data-titulo="Oscuro"><code>{c.oscuro}</code></td><td data-titulo="Uso">{c.uso}</td><td data-titulo="Contraste">{c.fondos ? (<span class="contrastes">{(["claro", "oscuro"] as const).map((tema) => (<span>{tema === "claro" ? "Claro: " : "Oscuro: "}<span class="contraste" data-minimo={c.minimo} data-fondos={c.fondos!.join(" ")}><span data-tema={tema} hidden><i style={`color:var(${c.token})`}></i>{c.fondos!.map((f) => <b style={`background-color:var(${f})`}></b>)}</span><span class="contraste-cifras"></span></span></span>))}</span>) : "—"}</td></tr>))}</tbody></table></div></section>
+
+<section class="banda-identidad" data-name="tipografia"><div class="columna"><h2>Tipografía</h2>
+<h3>Familias</h3><ul class="lista-tokens" role="list">{familias.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span class="muestra-texto" style={`font-family:var(${t});font-weight:${t === "--fuente-firma" ? 700 : 400}`}>Antonio Blánquez · {uso}</span></li>))}</ul>
+<h3>Pesos</h3><ul class="lista-tokens" role="list">{pesos.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span class="muestra-texto" style={`font-weight:var(${t})`}>{uso}</span></li>))}</ul>
+<h3>Tamaños</h3><table class="tabla-colores tabla-identidad"><thead><tr><th scope="col">Token</th><th scope="col">Móvil</th><th scope="col">Tableta</th><th scope="col">Escritorio</th><th scope="col">Muestra (este ancho)</th></tr></thead><tbody>{tamanosPorCorte.map((t) => (<tr><th scope="row" data-titulo="Token"><code>{t.token}</code>{t.nota && <span class="nota-token">{t.nota}</span>}</th><td data-titulo="Móvil"><code>{t.movil}</code></td><td data-titulo="Tableta"><code>{t.tableta}</code></td><td data-titulo="Escritorio"><code>{t.escritorio}</code></td><td data-titulo="Muestra"><span class={t.token === "--tamano-firma" ? "muestra-texto firma" : "muestra-texto"} style={`font-size:var(${t.token})`}>Antonio Blánquez</span></td></tr>))}</tbody></table>
+<h3>Estilos de texto</h3><table class="tabla-colores tabla-identidad"><thead><tr><th scope="col">Estilo</th><th scope="col">Familia · tamaño · peso · interlineado</th><th scope="col">Color</th><th scope="col">Dónde</th></tr></thead><tbody>{estilosTexto.map((e) => (<tr><th scope="row" data-titulo="Estilo"><span class={e.color.startsWith("degradado") ? "muestra-estilo muestra-degradado" : "muestra-estilo"} style={`font-family:var(${e.familia});font-size:var(${e.tamano});font-weight:${e.peso.slice(0, 3)};line-height:${e.interlineado.split("-")[0]};color:${colorMuestra(e.color, e.muestra)}`}>{e.muestra}</span><span class="nota-token">{e.estilo}</span></th><td data-titulo="Familia · tamaño · peso · interlineado"><code>{e.familia}</code> · <code>{e.tamano}</code> · {e.peso} · {e.interlineado}</td><td data-titulo="Color">{e.color.startsWith("--") ? <code>{e.color}</code> : e.color}</td><td data-titulo="Dónde">{e.donde}</td></tr>))}</tbody></table>
+</div></section>
+
+<section class="banda-identidad" data-name="espacios"><div class="columna"><h2>Espacios</h2><ul class="lista-tokens" role="list">{espacios.map((t) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span class="barra-espacio" style={`width:var(${t})`}></span></li>))}</ul></div></section>
+
+<section class="banda-identidad" data-name="medidas"><div class="columna"><h2>Medidas y cortes</h2>
+<h3>Medidas</h3><ul class="lista-tokens" role="list">{medidas.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span>{uso}</span></li>))}<li><code>--margen</code><span class="valor">20 · 40 · 80 px</span><span>Margen lateral en móvil, tableta y escritorio</span></li><li><code>ancho máximo</code><span class="valor">1120px</span><span>Contenido por encima de 1280 px (Decisión 16)</span></li></ul>
+<h3>Cortes</h3><table class="tabla-colores tabla-identidad"><thead><tr><th scope="col">Ancho de la página</th><th scope="col">Qué cambia</th></tr></thead><tbody>{cortes.map((c) => (<tr><th scope="row" data-titulo="Ancho de la página"><code>{c.corte}</code></th><td data-titulo="Qué cambia">{c.cambia}</td></tr>))}</tbody></table>
+</div></section>
+
+<section class="banda-identidad" data-name="esquinas"><div class="columna"><h2>Esquinas</h2><ul class="lista-tokens" role="list">{radios.map((t) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span class="muestra-esquina" style={`border-radius:var(${t})`}></span></li>))}</ul></div></section>
+
+<section class="banda-identidad" data-name="sombras"><div class="columna"><h2>Sombras</h2><span data-tema="claro" hidden></span><span data-tema="oscuro" hidden></span><ul class="lista-tokens" role="list">{sombras.map((t) => (<li><code>{t}</code><span class="valor">Claro: <code data-token={t} data-en-tema="claro"></code><br />Oscuro: <code data-token={t} data-en-tema="oscuro"></code></span><span class="muestra-sombra" style={`box-shadow:var(${t})`}></span></li>))}</ul></div></section>
+
+<section class="banda-identidad" data-name="movimiento"><div class="columna"><h2>Movimiento</h2>
+<h3>Duraciones</h3><ul class="lista-tokens" role="list">{movimientos.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span>{uso}</span></li>))}</ul>
+<h3>Curvas</h3><ul class="lista-tokens" role="list">{curvas.map(([t, uso]) => (<li><code>{t}</code><span class="valor"></span><span>{uso}</span></li>))}</ul>
+<p class="nota-seccion">Con «reducir movimiento» activado en el sistema no hay desplazamientos ni apariciones: solo cambian colores y sombras.</p>
+</div></section>
+
+<section class="banda-identidad" data-name="iconos"><div class="columna"><h2>Iconos</h2>
+<p class="nota-seccion">Trazo de 2 px con extremos redondeados (juego equivalente a lucide), en <code>currentColor</code> y con <code>aria-hidden</code>: van siempre junto a su texto.</p>
+<ul class="iconos-lista" role="list">{iconosTrazo.map((i) => (<li><span class="icono-chip"><Fragment set:html={i.svg} /></span><span class="icono-nombre">{i.nombre}</span><span class="icono-uso">{i.uso}</span></li>))}<li><span class="icono-chip"><IconoGlobo /></span><span class="icono-nombre">Globo</span><span class="icono-uso">Botón «En vivo» (18 px)</span></li><li><span class="icono-chip"><IconoSobre /></span><span class="icono-nombre">Sobre</span><span class="icono-uso">«Escríbeme» y fila de correo (18-20 px)</span></li><li><span class="icono-chip"><IconoDescarga /></span><span class="icono-nombre">Descarga</span><span class="icono-uso">«Descargar CV (PDF)» (18 px)</span></li><li><span class="icono-chip"><IconoFlechaFuera /></span><span class="icono-nombre">Enlace externo</span><span class="icono-uso">Filas de LinkedIn y GitHub (20 px)</span></li></ul>
+<h3>Logotipos de terceros</h3>
+<p class="nota-seccion">Color oficial, nunca recoloreado: <code>--color-logo-terceros</code> (Decisión 7).</p>
+<ul class="iconos-lista" role="list"><li><span class="icono-chip icono-marca"><IconoGitHub /></span><span class="icono-nombre">GitHub</span><span class="icono-uso">Botón «Código» y contacto</span></li><li><span class="icono-chip icono-marca"><IconoLinkedIn /></span><span class="icono-nombre">LinkedIn</span><span class="icono-uso">Contacto</span></li></ul>
+<h3>Iconos de proyecto</h3>
+<p class="nota-seccion">Cada proyecto conserva su icono (Decisión 1), a 24, 32 o 48 px; en oscuro van sobre la placa <code>--color-placa-icono</code>.</p>
+<ul class="iconos-lista" role="list">{proyectos.map((pr) => (<li><span class="icono-chip"><img class="icono" {...imagen(pr.icono, "32px")} alt="" width="32" height="32" /></span><span class="icono-nombre">{pr.nombre}</span><span class="icono-uso">Tarjeta, página y cajas</span></li>))}<li><span class="icono-chip"><img src="/favicon.svg" alt="" width="32" height="32" /></span><span class="icono-nombre">Icono de la web</span><span class="icono-uso">Pestaña del navegador y pantalla de inicio</span></li></ul>
+</div></section>
+
+<section class="banda-identidad" data-name="piezas"><div class="columna"><h2>Piezas</h2><ul class="lista-piezas" role="list"><li class="pieza"><code>.boton-primario</code><div class="pieza-muestra"><span class="botones-tarjeta"><a class="boton-primario" href="#"><IconoGlobo />En vivo</a></span></div></li><li class="pieza"><code>.boton-secundario</code><div class="pieza-muestra"><span class="botones-tarjeta"><a class="boton-secundario boton-marca" href="#"><IconoGitHub />Código</a></span></div></li><li class="pieza"><code>.boton-cuadrado</code><div class="pieza-muestra"><span class="botones-tarjeta"><a class="boton-secundario boton-marca boton-cuadrado" href="#"><IconoLinkedIn /><span class="sr-only">LinkedIn</span></a></span></div></li><li class="pieza" data-name="contacto"><code>.boton-copiar</code><div class="pieza-muestra canal-botones"><button type="button" class="boton-copiar" tabindex="-1" aria-hidden="true">Copiar</button></div></li><li class="pieza"><code>.etiquetas li</code><div class="pieza-muestra"><ul class="etiquetas" role="list"><li>TypeScript</li></ul></div></li>{estadosMenu.map((e) => (<li class="pieza"><code>{`.menu a · ${e === "actual" ? "sección actual" : e}`}</code><div class="pieza-muestra"><span class="menu-muestra"><a class={`enlace-menu estado-${e}`} href="#" aria-current={e === "actual" ? "true" : undefined}>Proyectos</a></span></div></li>))}{estadosBarra.map((e) => (<li class="pieza"><code>{`.barra-inferior .pastilla · ${e === "actual" ? "sección actual" : e}`}</code><div class="pieza-muestra pastillas-fila">{navegacion.map((n) => (<span class={`pastilla-muestra estado-${e}`}><span class="pastilla"><Fragment set:html={svg.barra[n.ancla as keyof typeof svg.barra]} /></span><span class="nombre-barra">{n.texto}</span></span>))}</div></li>))}<li class="pieza"><code>.paso-icono</code><div class="pieza-muestra pastillas-fila">{svg.pasos.map((s) => (<span class="paso-icono"><Fragment set:html={s} /></span>))}</div></li><li class="pieza"><code>.tarjeta-nohace</code><div class="pieza-muestra"><div class="caja-muestra tarjeta-nohace"><p class="texto">[texto pendiente]</p></div></div></li><li class="pieza"><code>.tarjeta-resultado</code><div class="pieza-muestra"><div class="caja-muestra tarjeta-resultado"><p class="texto">[texto pendiente]</p></div></div></li><li class="pieza"><code>h2 · raya</code><div class="pieza-muestra"><p class="h2-muestra">Título de sección</p></div></li><li class="pieza"><code>.decision-numero</code><div class="pieza-muestra"><span class="decision-numero">1</span></div></li><li class="pieza"><code>.boton-tema</code><div class="pieza-muestra"><span class="boton-tema" aria-hidden="true"><Fragment set:html={svg.tema.luna} /></span></div></li><li class="pieza"><code>.arriba a · hover y foco</code><div class="pieza-muestra muestra-arriba"><span class="arriba-muestra"><span>Arriba</span><Fragment set:html={svg.arriba} /></span></div></li><li class="pieza"><code>:focus-visible</code><div class="pieza-muestra"><span class="botones-tarjeta"><a class="boton-secundario boton-marca muestra-foco" href="#"><IconoGitHub />Código</a></span></div></li></ul></div></section>
+</Pagina>
+</Base>

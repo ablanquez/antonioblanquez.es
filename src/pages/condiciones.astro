@@ -1,0 +1,144 @@
+---
+/** Condiciones del servicio: texto de la página anterior (condiciones.html), en el marco de la web. */
+import Base from "../layouts/Base.astro"
+import Pagina from "../componentes/Pagina.astro"
+import { propietario } from "../datos/contenido"
+import { cifrarCorreo } from "../utiles/correo"
+// Correo protegido frente a los robots (ver utiles/correo.ts).
+const correoCifrado = cifrarCorreo(propietario.email)
+---
+<Base titulo={`Condiciones del servicio | ${propietario.nombre}`} descripcion="En qué términos se ofrecen RadiografIA, Desplázame, ZetaBus y Linaje: uso gratuito, sin garantías y con las fuentes declaradas." tipo="legal" nombreCapa="condiciones">
+<Pagina interna>
+<section class="banda-legal" data-name="condiciones"><div class="columna">
+<h1>Condiciones del servicio</h1>
+<p class="entradilla">
+  En qué términos se ofrecen las cuatro aplicaciones de este sitio. En resumen: son gratis,
+  son de uso libre, están publicadas con su código abierto, y <strong>no se garantiza que
+  los datos que muestran sean correctos</strong>. Lo que sigue desarrolla esas cuatro cosas.
+</p>
+
+<h2>1. Qué aceptas al usarlas</h2>
+<p>
+  Usar cualquiera de las aplicaciones de <code>antonioblanquez.es</code> implica aceptar
+  estas condiciones y el <a href="/aviso-legal">aviso legal</a>. Si no te parecen bien, basta
+  con no usarlas: no hay cuenta que cerrar ni nada que desinstalar.
+</p>
+
+<h2>2. Son gratuitas y no hay contrato de servicio</h2>
+<ul>
+  <li>No se cobra nada, ni ahora ni por funciones adicionales.</li>
+  <li>No hay registro para navegar, salvo en una instancia de Linaje donde te identifiques.</li>
+  <li>
+    <strong>No hay compromiso de disponibilidad.</strong> Pueden estar caídas, lentas, en
+    obras o retiradas, en cualquier momento y sin aviso. No hay plazo de respuesta ni
+    soporte comprometido.
+  </li>
+  <li>
+    Pueden cambiar o desaparecer funciones. El código queda publicado, de modo que lo que se
+    retire del aire se puede seguir levantando por cuenta propia.
+  </li>
+</ul>
+
+<h2>3. Los datos pueden estar mal, y esto es lo importante</h2>
+<div class="aviso">
+  <p>
+    <strong>No tomes decisiones que te importen basándote solo en estas aplicaciones.</strong> Para horarios, tarifas, restricciones de tráfico o distintivos ambientales, la fuente que
+    vale es la oficial del operador o de la administración correspondiente.
+  </p>
+</div>
+<p>Concretando, porque cada aplicación falla de una manera distinta:</p>
+<ul>
+  <li>
+    <strong>ZetaBus</strong> es un visor independiente construido sobre fuentes públicas. No
+    es un servicio oficial de transporte, no está respaldado por ningún operador ni
+    administración, y los desvíos que detecta son el resultado de cruzar fuentes que pueden
+    contradecirse o estar desactualizadas.
+  </li>
+  <li>
+    <strong>Desplázame</strong> calcula rutas sobre un callejero y una red propios. Una ruta
+    puede atravesar una obra que no conoce, suponer un paso que ya no existe o ignorar una
+    restricción reciente. Los avisos de zona de bajas emisiones <strong>avisan, no
+    deciden</strong>: la aplicación no sabe qué distintivo lleva tu vehículo salvo que lo
+    consultes, y la responsabilidad de circular conforme a la ordenanza es tuya.
+  </li>
+  <li>
+    <strong>El distintivo ambiental</strong> que muestra Desplázame es la respuesta de la
+    sede electrónica de la DGT en el momento de la consulta, trasladada tal cual. No es una
+    certificación, no se almacena, y ante cualquier discrepancia manda la DGT.
+  </li>
+  <li>
+    <strong>RadiografIA</strong> señala rasgos de estilo mediante un conjunto de reglas
+    documentadas con sus fuentes. <strong>No determina si un texto lo escribió una persona o
+    una máquina</strong>, y no debe usarse para acusar a nadie, calificar trabajos
+    académicos ni tomar decisiones sobre personas.
+  </li>
+  <li>
+    <strong>Linaje</strong> calcula parentescos a partir de lo que tú introduces. Si los
+    datos de entrada están mal, el árbol estará mal.
+  </li>
+</ul>
+
+<h2>4. Uso aceptable</h2>
+<p>Se pide poco, y es de sentido común:</p>
+<ul>
+  <li>
+    No hagas peticiones automatizadas masivas contra las aplicaciones ni contra sus APIs.
+    Corren en un alojamiento modesto y pagado por una persona; un barrido intensivo las tira
+    para todo el mundo. Si necesitas los datos en volumen, el código es abierto: levanta tu
+    propia copia.
+  </li>
+  <li>
+    No consultes matrículas que no sean tuyas o de un vehículo que gestiones. La función está
+    para saber tu propio distintivo.
+  </li>
+  <li>
+    No uses las aplicaciones para fines ilícitos, para suplantar a nadie ni para intentar
+    acceder a partes no públicas de los servidores.
+  </li>
+</ul>
+<p>
+  Si detectas un fallo de seguridad, avisa a <a href="/#contacto" data-correo={correoCifrado}>ablanquez<span class="senuelo">-quitar-esto-</span>@gmail.com</a> antes de hacerlo público. Se
+  agradece de verdad.
+</p>
+
+<h2>5. El código y su licencia</h2>
+<p>
+  Las cuatro aplicaciones están publicadas bajo la <strong>licencia Apache 2.0</strong> en <a href="https://github.com/ablanquez" target="_blank" rel="noopener noreferrer">github.com/ablanquez<span class="sr-only"> (se abre en una pestaña nueva)</span></a>. Puedes usarlas, copiarlas,
+  modificarlas y distribuirlas en los términos de esa licencia, que es la que manda sobre el
+  código. Lo que esta página dice del código no amplía ni recorta lo que diga la licencia.
+</p>
+<p>
+  La licencia cubre el código. <strong>No cubre los datos de terceros</strong> que las
+  aplicaciones consumen —cartografía, callejero municipal, datos de transporte—, cada uno con
+  sus propias condiciones y su propia atribución, declaradas en cada repositorio.
+</p>
+
+<h2>6. Linaje instalado por ti</h2>
+<p>
+  Linaje está hecho para autoalojarse. Si lo instalas, <strong>la instancia es tuya: tú
+  decides quién entra, tú haces las copias de seguridad y tú respondes de los datos
+  personales que introduzcas</strong>, incluidos los de familiares vivos. El titular de este
+  sitio no tiene acceso a tu instancia, no puede recuperar tus datos si los pierdes y no
+  presta soporte sobre ella más allá de lo que esté documentado en el repositorio.
+</p>
+
+<h2>7. Límite de responsabilidad</h2>
+<p>
+  Las aplicaciones se ofrecen <strong>tal cual y sin garantías de ningún tipo</strong>, en la
+  máxima medida que permita la ley aplicable. El titular no responde de perjuicios derivados
+  de su uso, de la indisponibilidad del servicio, de la pérdida de datos en instancias
+  autoalojadas ni de decisiones tomadas confiando en la información que muestran.
+</p>
+<p>
+  Nada de esto pretende excluir responsabilidades que la ley no permita excluir.
+</p>
+
+<h2>8. Cambios y ley aplicable</h2>
+<p>
+  Estas condiciones pueden cambiar cuando cambien las aplicaciones. Se rigen por la legislación española, y para cualquier controversia
+  serán competentes los juzgados y tribunales que correspondan conforme a la normativa
+  aplicable.
+</p>
+</div></section>
+</Pagina>
+</Base>
