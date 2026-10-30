@@ -1,0 +1,57 @@
+# antonioblanquez.es · configuración del servidor (Hostinger, LiteSpeed/Apache)
+
+# ── Direcciones (Ronda 3) ─────────────────────────────────────────────────────────────
+# Una sola dirección por página, sin «.html». Las antiguas (/privacidad.html, /index.html…)
+# redirigen con 301 a la limpia; la limpia sirve el archivo .html por dentro.
+RewriteEngine On
+
+# /index.html o /index → /
+RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# /lo-que-sea.html → /lo-que-sea (THE_REQUEST: solo lo que pidió el navegador, sin bucles)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# /proyectos/desplazame sirve /proyectos/desplazame.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Página de error propia, con código 404 de verdad.
+ErrorDocument 404 /404.html
+
+# ── Compresión (Ronda 4) ──────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# ── Caché (Ronda 4) ───────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # CSS y JS llevan una huella en el nombre (/_astro/…); las fuentes no cambian: un año.
+  <FilesMatch "\.(css|js|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Imágenes: un mes.
+  <FilesMatch "\.(webp|png|jpg|svg|ico|pdf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # Páginas: el navegador pregunta siempre si hay versión nueva.
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+# ── Seguridad (Ronda 5) ───────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Solo https durante un año, para este dominio (los subdominios de las aplicaciones van aparte).
+  Header always set Strict-Transport-Security "max-age=31536000"
+  # Nadie puede meter la web dentro de otra. La política completa va en cada página (<meta>).
+  Header always set Content-Security-Policy "upgrade-insecure-requests; frame-ancestors 'none'"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
