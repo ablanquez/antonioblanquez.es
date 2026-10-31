@@ -2,7 +2,7 @@ export const propietario = {
   nombre: "Antonio Blánquez",
   fraseCorta: "Convierto procesos manuales en aplicaciones web.",
   fraseLarga:
-    "Ayudo a empresas que pierden horas en procesos manuales. Llevo más de quince años dentro de esos procesos: banca, gestión documental, comercio electrónico. Ahora, además, construyo la herramienta: defino qué hace, la diseño y dirijo a la IA que escribe el código. Y no doy nada por entregado sin comprobar que funciona.",
+    "Ayudo a empresas que pierden horas en procesos manuales. Llevo más de quince años dentro de esos procesos: banca, gestión documental, comercio electrónico. Ahora, además, construyo la herramienta: defino qué hace, la diseño y dirijo a la IA que escribe el código.",
   email: "ablanquez@gmail.com",
   linkedin: "https://www.linkedin.com/in/antonioblanquez/",
   github: "https://github.com/ablanquez",
@@ -112,7 +112,6 @@ export type PaginaProyectoDatos = {
   rol: string
   fecha: string
   estado: string
-  version: string
   tecnologias: string[]
   cifras: { valor: string; etiqueta: string }[]
   bloques: {
@@ -131,7 +130,6 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
     rol: "Idea, diseño y verificación · código con IA · en solitario",
     fecha: "Octubre de 2026",
     estado: "En producción",
-    version: "v1.0.0",
     tecnologias: ["Astro", "TypeScript", "JSON Schema", "pdfmake"],
     cifras: [
       {
@@ -143,8 +141,8 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         etiqueta: "textos de personas apartados para validar",
       },
       {
-        valor: "2,1\u00a0%",
-        etiqueta: "de falsos positivos en esos textos",
+        valor: "97,9\u00a0%",
+        etiqueta: "de textos de personas sin falsa alarma",
       },
       {
         valor: "308",
@@ -154,13 +152,13 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
     bloques: {
       queEs: [
         "RadiografIA analiza un texto en español y marca los rasgos de estilo que, según sus fuentes, los asistentes de chat dejan más que las personas. Lo compara con textos escritos por personas, del mismo género y la misma longitud, y dice a qué suena. Nunca quién lo escribió.",
-        "Nació de mi propio trabajo con IA. Tengo un sistema de reglas para que los textos que escribo con ella suenen a persona, y con el tiempo me sirvió también para notar cuándo alguien me contesta con un texto que ha dejado entero en manos de la IA. RadiografIA es el experimento de convertir esa experiencia en una herramienta.",
+        "Nació de mi propio trabajo con IA. Tengo un sistema de reglas para que los textos que escribo con ella suenen a persona, y con el tiempo me sirvió también para notar cuándo alguien me contesta con un texto que ha dejado entero en manos de la IA. RadiografIA convierte esa experiencia en una herramienta.",
         "Por dentro, el motor no sabe nada de IA: aplica paquetes de reglas en JSON. RadiografIA es uno de ellos, y cualquiera puede cargar el suyo, por ejemplo con la guía de estilo de su empresa, sin que el fichero salga del navegador.",
       ],
       decisiones: [
         "Todo corre en el navegador. No hay backend ni cuentas ni cookies, y el texto no sale del ordenador de quien lo pega. El informe en PDF también se genera allí, en un trozo de código que solo se descarga al pulsar «Descargar informe».",
         "Cada regla cita sus fuentes y lleva su nivel de evidencia, y ese nivel limita lo que pesa: lo medido en textos en español pesa hasta 3; lo que solo cuentan guías y observaciones, hasta 1. Las reglas estadísticas no usan umbrales fijos. Comparan el texto con los percentiles de textos de personas de su género y su longitud.",
-        "El único etiquetador gramatical para español escrito en JavaScript se midió contra un corpus anotado y se quedó por debajo del 85\u00a0% que se le pedía. Las reglas que dependían de él se quedaron fuera de la v1.",
+        "El único etiquetador gramatical para español escrito en JavaScript se midió contra un corpus anotado y se quedó por debajo del 85\u00a0% que se le pedía. Las reglas que dependían de él se quedaron fuera.",
       ],
       comprobe: [
         "La suite tiene 1.217 tests: 909 del motor y 308 de la web. Los de la web abren la página en Chrome y miden lo que se ve: el contraste, el orden del foco, el tamaño de lo que se pulsa y los 320\u00a0px sin scroll horizontal.",
@@ -168,15 +166,14 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
       ],
       noHace: [
         "No dice quién escribió un texto. Una persona puede tener esos rasgos y un asistente puede no tenerlos, y por eso la frase dice «suena a». El texto de ejemplo que generó Claude Opus 5.5 sin instrucciones de estilo sale con muy pocos rasgos de asistente.",
-        "Tampoco da cifras de acierto: haría falta un corpus de textos de asistente medido con el mismo cuidado, y quedó fuera de la v1. Con menos de 100 palabras no analiza, y las columnas y los blogs de hoy, la narrativa contemporánea, el lenguaje corporativo y el español de América no están calibrados, porque no tienen corpus abierto con licencia.",
+        "Tampoco da cifras de acierto: haría falta un corpus de textos de asistente medido con el mismo cuidado. Con menos de 100 palabras no analiza, y las columnas y los blogs de hoy, la narrativa contemporánea, el lenguaje corporativo y el español de América no están calibrados, porque no tienen corpus abierto con licencia.",
       ],
       resultado: [
         "En producción desde el 6 de octubre de 2026: 50 reglas en dos paquetes, 6 géneros calibrados y 54 páginas, con un catálogo donde cada regla tiene su ficha con sus fuentes.",
-        "En el género administrativo, dos o más reglas saltan en el 5,1\u00a0% de los textos de personas (5 de 98), por encima del 5\u00a0% que pedía el plan. Lo acepté, y está declarado en el README.",
       ],
       distinto: [
-        "La haría más modular. Hoy se puede cargar un paquete de reglas propio, pero entero y solo mientras dura la visita: al recargar la página, desaparece. Me gustaría una intranet donde activar o desactivar cada regla con un clic y que la elección se quedara guardada.",
-        "Así serviría para algo más que la IA: por ejemplo, para que una empresa revise sus textos con su propio lenguaje corporativo.",
+        "El siguiente paso es hacerla más modular. Hoy se puede cargar un paquete de reglas propio, pero entero y solo mientras dura la visita: al recargar la página, desaparece. La idea es una intranet donde activar o desactivar cada regla con un clic y que la elección se quede guardada.",
+        "Así servirá para algo más que la IA: por ejemplo, para que una empresa revise sus textos con su propio lenguaje corporativo.",
       ],
     },
     masCapturas: [
@@ -196,7 +193,6 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
     rol: "Idea, diseño y verificación · código con IA · en solitario",
     fecha: "Septiembre de 2026",
     estado: "En producción",
-    version: "v1.0.1",
     tecnologias: ["Angular", "TypeScript", "Node", "Leaflet", "OpenStreetMap"],
     cifras: [
       {
@@ -208,12 +204,12 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         etiqueta: "veredictos de pantalla en Chrome",
       },
       {
-        valor: "38",
-        etiqueta: "hallazgos de la auditoría de cierre",
+        valor: "46.150",
+        etiqueta: "portales del callejero municipal",
       },
       {
-        valor: "5",
-        etiqueta: "hallazgos reales bajo un 100 de accesibilidad",
+        valor: "40",
+        etiqueta: "conjuntos de datos, cada uno con su ficha",
       },
     ],
     bloques: {
@@ -228,19 +224,18 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
       ],
       comprobe: [
         "Más de 1.400 pruebas de unidad entre motor e interfaz, y diez suites de pantalla que conducen un Chrome de verdad y suman más de 1.700 veredictos. Miden el píxel pintado y el foco con el teclado, no la clase de CSS que debería haberlo hecho.",
-        "El cierre fue una auditoría en seis bloques, con 38 hallazgos y cuatro tandas de arreglo. Ya publicada, pasó Lighthouse, axe-core, SSL Labs y el validador del W3C. La nota de accesibilidad marcaba 100 y debajo había cinco hallazgos reales, que se cerraron uno a uno.",
+        "El cierre fue una revisión completa en seis frentes. Ya publicada, pasó Lighthouse, axe-core, SSL Labs y el validador del W3C.",
       ],
       noHace: [
         "No adivina. Si un dato no está, lo dice, y «no hay» y «no lo sé» son frases distintas en pantalla. Tampoco pide cuentas ni pone cookies propias.",
-        "Quedan pendientes, y declaradas, las pruebas con un lector de pantalla de verdad y con un teléfono físico. Las cabeceras de seguridad no salen del código: las pone el hosting, y siguen siendo tarea de panel.",
         "Desde el 6 de octubre de 2026, el GTFS oficial no trae servicio de autobús, así que ahora mismo no salen rutas en bus. Volverán cuando el operador publique uno nuevo.",
       ],
       resultado: [
         "En producción desde el 8 de septiembre de 2026. Trabaja sobre los 46.150 portales del callejero municipal y cruza OpenStreetMap, la red de bus y tranvía, BiZi, YeGo y la ZBE. Cada uno de sus 40 conjuntos de datos tiene una ficha con su licencia, su fecha y lo que trae de roto.",
       ],
       distinto: [
-        "Empezaría por hacer la lista de todos los modos, comprobar de dónde sale el dato de cada uno y construir el núcleo del motor antes que nada.",
-        "Y montaría una prueba automática que comparase cientos de rutas con las de Google Maps o un GPS, para saber que lo que enseña la pantalla coincide con la realidad.",
+        "Hoy empiezo por hacer la lista de todos los modos, comprobar de dónde sale el dato de cada uno y construir el núcleo del motor antes que nada.",
+        "El siguiente paso es una prueba automática que compare cientos de rutas con las de Google Maps o un GPS, para asegurar que lo que enseña la pantalla coincide con la realidad.",
       ],
     },
     masCapturas: [
@@ -260,7 +255,6 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
     rol: "Idea, diseño y verificación · código con IA · en solitario",
     fecha: "Julio de 2026",
     estado: "En producción",
-    version: "v1.1.0",
     tecnologias: [
       "Next.js",
       "React",
@@ -283,8 +277,8 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         etiqueta: "informes de auditoría de fuentes",
       },
       {
-        valor: "3",
-        etiqueta: "retractaciones de informes propios",
+        valor: "403",
+        etiqueta: "vehículos reconocidos",
       },
     ],
     bloques: {
@@ -293,23 +287,23 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         "Existe porque las fuentes oficiales se contradicen y nadie lo dice. Con obras, el GTFS de la ciudad sigue mandando el autobús por calles cortadas. ZetaBus compara ese recorrido con el que el operador publica para hoy, deduce el desvío y tacha las paradas por las que no pasa. El día que restauran la ruta, el aviso se apaga solo.",
       ],
       decisiones: [
-        "Primero se auditaron las fuentes y después se escribió el código: siete fases de investigación y trece informes, tres de ellos para retractarse de uno anterior.",
+        "Primero se auditaron las fuentes y después se escribió el código: siete fases de investigación y trece informes.",
         "En Zaragoza no hay GTFS en tiempo real, así que ZetaBus consulta endpoints no documentados del operador, y lo dice. Pide con caché compartida y un techo de peticiones por segundo, y cada petición lleva el nombre del proyecto y la URL de su repositorio. Cuando nadie está mirando, no pide nada.",
         "Sin base de datos: todo lo que enseña se deriva de sus fuentes, y lo derivable no se guarda.",
       ],
       comprobe: [
         "Más de 470 pruebas de motor con Vitest y más de 800 de navegador con Playwright. Las visuales miden el píxel pintado, porque verificar el JSON con curl no es haber mirado la pantalla.",
-        "El 1 de agosto de 2026, ya desplegada, pasó PageSpeed, el validador del W3C, securityheaders y Rich Results. Ninguna nota bajó, y dos páginas pasaron de tener errores a cero.",
+        "El 1 de agosto de 2026, ya desplegada, pasó PageSpeed, el validador del W3C, securityheaders y Rich Results, sin que bajara ninguna nota.",
       ],
       noHace: [
         "No adjudica. Si el operador declara una parada suprimida y su sistema sigue anunciando autobuses en ella, ZetaBus enseña los dos hechos y quién dice cada uno, y pide confirmarlo en la marquesina.",
-        "Tampoco ve todas las paradas suprimidas: cuando el autobús pasa sin parar, no lo refleja ninguna fuente. El tranvía y los avisos de parada suprimida en la vista de parada están previstos, sin fecha.",
+        "Tampoco ve todas las paradas suprimidas: cuando el autobús pasa sin parar, no lo refleja ninguna fuente. El tranvía y los avisos de parada suprimida en la vista de parada están previstos.",
       ],
       resultado: [
         "En producción desde el 26 de julio de 2026, con 44 líneas, 934 paradas y 403 vehículos reconocidos. Cada ficha de vehículo dice de qué fuente sale cada campo, y el pliego municipal destapó que el fichero de flota heredado fallaba en el 20\u00a0% de las longitudes.",
       ],
       distinto: [
-        "Montaría primero mi propio sistema de datos enriquecido. Las fuentes que usa no coinciden entre sí, ni siquiera las del propio operador, y por eso hay que reconstruir el dato cada día para evitar errores.",
+        "El siguiente paso es un sistema de datos propio y enriquecido. Las fuentes que usa no coinciden entre sí, ni siquiera las del propio operador, y hoy hay que reconstruir el dato cada día para evitar errores.",
         "La empresa ni siquiera publica qué autobús es cada uno. El modelo, la longitud y el combustible salieron del pliego municipal y, para los 43 vehículos que no aparecían en él, de una web de aficionados que cataloga las flotas.",
       ],
     },
@@ -330,7 +324,6 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
     rol: "Idea, diseño y verificación · código con IA · en solitario",
     fecha: "Julio de 2026",
     estado: "Demo en vivo",
-    version: "v1.0.0",
     tecnologias: [
       "PHP",
       "MySQL / MariaDB",
@@ -344,12 +337,12 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         etiqueta: "pruebas en el backtest final",
       },
       {
-        valor: "272",
-        etiqueta: "fallos registrados en la bitácora",
+        valor: "3",
+        etiqueta: "revisiones completas antes de publicarla",
       },
       {
-        valor: "162",
-        etiqueta: "con una prueba que dio verde",
+        valor: "0",
+        etiqueta: "frameworks: PHP y JavaScript, para que funcione en cualquier hosting compartido",
       },
     ],
     bloques: {
@@ -363,18 +356,17 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
         "El servidor es la única autoridad. Rechaza árboles imposibles, como un ciclo o un tercer progenitor, aunque el navegador los deje pasar.",
       ],
       comprobe: [
-        "Antes de publicarla pasó una auditoría de seguridad, una re-auditoría que la dio por lista y un backtest final de 463 pruebas que pedí aunque nos llevara un día entero. Ese backtest cazó fallos que las auditorías habían dado por buenos.",
-        "Todo quedó en la bitácora: 272 fallos reales, y en 162 de ellos consta una prueba concreta que dio verde mientras el fallo seguía vivo.",
+        "Antes de publicarla pasó una auditoría de seguridad, una re-auditoría que la dio por lista y un backtest final de 463 pruebas que pedí aunque nos llevara un día entero. Ese backtest encontró problemas que las auditorías habían pasado por alto.",
       ],
       noHace: [
-        "Todavía no tiene cuentas por persona, ni varios árboles en una instalación, ni actualización asistida. Están en la hoja de ruta, sin fecha.",
+        "Todavía no tiene cuentas por persona, ni varios árboles en una instalación, ni actualización asistida. Están en la hoja de ruta.",
       ],
       resultado: [
-        "Versión 1.0.0 de julio de 2026, con demo pública en linaje.antonioblanquez.es: el árbol de una familia ficticia, con caras generadas por IA, que se puede leer sin registro y editar con la clave de demo. Se restablece sola cada hora.",
+        "En producción desde julio de 2026, con demo pública en linaje.antonioblanquez.es: el árbol de una familia ficticia, con caras generadas por IA, que se puede leer sin registro y editar con la clave de demo. Se restablece sola cada hora.",
       ],
       distinto: [
-        "Nació como un árbol genealógico sencillo y, al ser mi primer proyecto, improvisé mucho hasta que me puse unas reglas que luego me sirvieron para todos los demás.",
-        "Hoy fijaría desde el primer día esas reglas, la tecnología y el resto de piezas. Se hizo de forma atropellada, y eso costó el doble de tiempo.",
+        "Nació como un árbol genealógico sencillo y fue creciendo con el uso. De él salieron las reglas de trabajo que hoy aplico en todos los proyectos.",
+        "Hoy fijo desde el primer día esas reglas, la tecnología y el resto de piezas.",
       ],
     },
     masCapturas: [
@@ -392,40 +384,39 @@ export const paginasProyecto: Record<string, PaginaProyectoDatos> = {
   },
 }
 
-/** «Cómo trabajo» (textos literales aprobados por Antonio). */
+/** «Cómo trabajo» (textos literales aprobados por Antonio; lote 6, 31/10/2026: sin entrada y sin el paso «Comprobar»).
+ *  `icono` es la posición del dibujo en svg.pasos (se quitó el 4.º, «Lista con marcas», junto con su paso). */
 export const comoTrabajo = {
-  entrada:
-    "Cada proyecto deja reglas para el siguiente: lo que falló en uno entra por escrito en el método del otro.",
   pasos: [
     {
       titulo: "Entender el problema",
+      icono: 0,
       texto:
-        "Primero, qué hace falta y para quién. Si los datos vienen de fuera, compruebo qué dice cada fuente antes de escribir una línea de código.",
+        "Primero, qué hace falta y para quién. Si los datos vienen de fuera, compruebo qué dice cada fuente antes de escribir una línea de código. Si algo de lo que me pides choca con una norma, con la accesibilidad o con los datos disponibles, te lo digo con el porqué y te propongo cómo hacerlo.",
     },
     {
       titulo: "Diseñar en tres tamaños",
+      icono: 1,
       texto:
         "Ordenador, tableta y móvil desde el principio, con las pautas de accesibilidad WCAG 2.2 en nivel AA. Cada decisión de diseño la veo aplicada antes de darla por buena, y los colores llevan su contraste calculado.",
     },
     {
       titulo: "Construir por tandas",
+      icono: 2,
       texto:
         "La IA escribe el código a partir de encargos escritos, y reviso cada tanda antes de pasar a la siguiente. Primero va lo que no puede fallar; la pantalla, después.",
     },
     {
-      titulo: "Comprobar",
-      texto:
-        "Un test solo sirve si falla cuando el código está roto, así que lo pruebo rompiendo el código. Cada pantalla la miro también en un móvil y una tableta de verdad. Los fallos reales quedan apuntados en una bitácora, con lo que daba bien mientras estaba roto.",
-    },
-    {
       titulo: "Cerrar",
+      icono: 4,
       texto:
-        "Antes de dar un proyecto por terminado, lo reviso entero por partes: código, tests, interfaz, servidor, experiencia y documentación. Lo que sale de esa revisión se arregla antes de publicar la versión 1.0.0.",
+        "Cada proyecto se cierra con una revisión completa en seis frentes: código, pruebas, interfaz, servidor, experiencia de uso y documentación.",
     },
     {
       titulo: "Mantener",
+      icono: 5,
       texto:
-        "Cuando llega un aviso de seguridad, primero compruebo si afecta de verdad. Si afecta, aplico el parche y lo verifico en la web publicada. Lo que dejo para más adelante queda apuntado con su motivo.",
+        "Después de la entrega sigo ahí. Si algo falla o llega un aviso de seguridad, lo reviso, lo arreglo y lo compruebo en la web publicada.",
     },
   ],
 }
@@ -463,7 +454,7 @@ export const sobreMi = {
     {
       rotulo: "2025-2026 · Formación",
       texto:
-        "Un año dedicado a formarme: un máster de IA y un máster en Frontend 360º.",
+        "Dos másteres, uno de IA y otro de Frontend 360º: la base para pasar de usar las herramientas a construirlas.",
       cifras: [
         { matiz: "en un año", valor: "2", etiqueta: "másteres cursados" },
       ],
@@ -471,7 +462,7 @@ export const sobreMi = {
     {
       rotulo: "Desde 2026 · Aplicaciones propias",
       texto:
-        "En junio de 2026 monté mis primeras aplicaciones web, las cuatro de esta página, y este portafolio. Las construyo en solitario: la IA escribe el código en el lenguaje que haga falta; desmontar el problema en piezas y volver a montarlo bien lo pongo yo, después de dieciocho años haciéndolo.",
+        "Desde junio de 2026 desarrollo aplicaciones web: las cuatro de esta página y este portafolio. Las construyo en solitario: la IA escribe el código en el lenguaje que haga falta; desmontar el problema en piezas y volver a montarlo bien lo pongo yo, después de más de quince años haciéndolo.",
       cifras: [
         { matiz: "en solitario", valor: "4", etiqueta: "aplicaciones creadas" },
       ],

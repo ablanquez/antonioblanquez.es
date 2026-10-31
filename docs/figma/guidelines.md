@@ -55,17 +55,19 @@ translate, rephrase, shorten or add copy.
   Llevo más de quince años dentro de esos procesos: banca, gestión
   documental, comercio electrónico. Ahora, además, construyo la
   herramienta: defino qué hace, la diseño y dirijo a la IA que escribe el
-  código. Y no doy nada por entregado sin comprobar que funciona.»
+  código.» (lote 6, 31/10/2026: sin «Y no doy nada por entregado sin
+  comprobar que funciona.»)
 - Email: ablanquez@gmail.com
 - LinkedIn: https://www.linkedin.com/in/antonioblanquez/
 - GitHub: https://github.com/ablanquez
 
 ### How I work (verbatim)
-- Intro: «Cada proyecto deja reglas para el siguiente: lo que falló en uno
-  entra por escrito en el método del otro.»
+- No intro (removed in lote 6, 31/10/2026).
 - 1. «Entender el problema» — «Primero, qué hace falta y para quién. Si
   los datos vienen de fuera, compruebo qué dice cada fuente antes de
-  escribir una línea de código.»
+  escribir una línea de código. Si algo de lo que me pides choca con una
+  norma, con la accesibilidad o con los datos disponibles, te lo digo con
+  el porqué y te propongo cómo hacerlo.»
 - 2. «Diseñar en tres tamaños» — «Ordenador, tableta y móvil desde el
   principio, con las pautas de accesibilidad WCAG 2.2 en nivel AA. Cada
   decisión de diseño la veo aplicada antes de darla por buena, y los
@@ -73,17 +75,14 @@ translate, rephrase, shorten or add copy.
 - 3. «Construir por tandas» — «La IA escribe el código a partir de
   encargos escritos, y reviso cada tanda antes de pasar a la siguiente.
   Primero va lo que no puede fallar; la pantalla, después.»
-- 4. «Comprobar» — «Un test solo sirve si falla cuando el código está
-  roto, así que lo pruebo rompiendo el código. Cada pantalla la miro
-  también en un móvil y una tableta de verdad. Los fallos reales quedan
-  apuntados en una bitácora, con lo que daba bien mientras estaba roto.»
-- 5. «Cerrar» — «Antes de dar un proyecto por terminado, lo reviso entero
-  por partes: código, tests, interfaz, servidor, experiencia y
-  documentación. Lo que sale de esa revisión se arregla antes de publicar
-  la versión 1.0.0.»
-- 6. «Mantener» — «Cuando llega un aviso de seguridad, primero compruebo
-  si afecta de verdad. Si afecta, aplico el parche y lo verifico en la web
-  publicada. Lo que dejo para más adelante queda apuntado con su motivo.»
+- 4. «Cerrar» — «Cada proyecto se cierra con una revisión completa en seis
+  frentes: código, pruebas, interfaz, servidor, experiencia de uso y
+  documentación.»
+- 5. «Mantener» — «Después de la entrega sigo ahí. Si algo falla o llega
+  un aviso de seguridad, lo reviso, lo arreglo y lo compruebo en la web
+  publicada.»
+- (Lote 6, 31/10/2026: the step «Comprobar» was removed; each step keeps
+  its own icon.)
 
 ### About me (verbatim)
 - 1. «2007-2012 · Fundación DFA» — «En la Fundación DFA (Disminuidos
@@ -106,14 +105,15 @@ translate, rephrase, shorten or add copy.
   sistema no aceptaba. Al buscarles otra vía de entrada, a veces
   encontraba fallos que después se corregían.»
   Figures: cerca de 15.000 expedientes de KYC al mes; durante 8 años en banca digital.
-- 4. «2025-2026 · Formación» — «Un año dedicado a formarme: un máster de
-  IA y un máster en Frontend 360º.»
+- 4. «2025-2026 · Formación» — «Dos másteres, uno de IA y otro de
+  Frontend 360º: la base para pasar de usar las herramientas a
+  construirlas.»
   Figures: en un año 2 másteres cursados.
-- 5. «Desde 2026 · Aplicaciones propias» — «En junio de 2026 monté mis
-  primeras aplicaciones web, las cuatro de esta página, y este portafolio.
-  Las construyo en solitario: la IA escribe el código en el lenguaje que
-  haga falta; desmontar el problema en piezas y volver a montarlo bien lo
-  pongo yo, después de dieciocho años haciéndolo.»
+- 5. «Desde 2026 · Aplicaciones propias» — «Desde junio de 2026
+  desarrollo aplicaciones web: las cuatro de esta página y este
+  portafolio. Las construyo en solitario: la IA escribe el código en el
+  lenguaje que haga falta; desmontar el problema en piezas y volver a
+  montarlo bien lo pongo yo, después de más de quince años haciéndolo.»
   Figures: en solitario 4 aplicaciones creadas.
 - Closing: «Cada etapa de mi carrera siguió un salto de la tecnología: el
   escáner, el comercio en línea, la banca digital. El siguiente es que
@@ -353,7 +353,8 @@ structure. Supersedes the provisional «Project page sections».
   as on the cards, larger; tablet screenshot pending) · facts (Rol,
   Fecha, Estado, Tecnologías as chips) · «Qué es y por qué existe» ·
   «Decisiones» · «Cómo lo comprobé» · «Lo que no hace» · «Resultado» ·
-  «Qué haría distinto» · «Más capturas» · previous and next project.
+  «Qué haría distinto» (since 31/10/2026 «Lo que me llevo y lo que
+  viene», Decision 24) · «Más capturas» · previous and next project.
   Body copy `[texto pendiente]` until it is written from each README.
 - Previous and next in a circular order: RadiografIA → Desplázame →
   ZetaBus → Linaje → RadiografIA.
@@ -371,14 +372,14 @@ home page keeps them as they were.
   previous and next boxes use the full content width, also centred.
 - Order: back (tablet and desktop) · composition · entry · «Por qué
   existe» · «Decisiones» · «Cómo lo comprobé» · «Lo que no hace» ·
-  «Resultado» · «Qué haría distinto» · «Más capturas» · previous and next
-  project.
+  «Resultado» · «Lo que me llevo y lo que viene» (Decision 24) · «Más
+  capturas» · previous and next project.
 - Composition: the desktop screenshot inside a browser-window frame (36 px
   `#F7F5F0` bar with three `#D9D9D9` dots and the project domain as plain
   text in a pill at 14 px), with the phone frame on the right as on the
   cards.
 - Entry: 4 px stripe · technology tags (neutral; never brand colours or
-  logos) · 48 px icon and h1 · data line (date, status and version, each
+  logos) · 48 px icon and h1 · data line (date and status since Decision 24; each
   with an 18 px stroke icon and a visually hidden label) · lead text
   1.25 / 1.125 rem `#4A4A4A` · buttons. «Rol» is not shown on project
   pages: it is the same in all four and will be said once on the home
@@ -654,6 +655,28 @@ inline theme scripts by their SHA-256, and inline style attributes (the
 model's per-project colours). Nobody can frame the site. nosniff,
 strict-origin-when-cross-origin referrer, no camera, microphone or location,
 and Cross-Origin-Opener-Policy same-origin.
+
+**Decision 24 (signed 31/10/2026): texts read by both audiences (lote 6).**
+The site (home, project pages, /identidad and legal pages) is read at once
+by companies and recruiters, so nothing on it may put either off: no
+promises of what is taken for granted («funciona», «lo compruebo»), no own
+mistakes («improvisé», «atropellada», bug logs, retractions, findings), no
+version jargon. GitHub is the method, for a technical reader, and keeps the
+logs and mistakes. Faults of third-party sources stay. Applied:
+- Project pages: the data line drops «Versión» (date and status only); the
+  section «Qué haría distinto» is now «Lo que me llevo y lo que viene», in
+  the present or as the next step; new figures (Desplázame: 46.150 portales,
+  40 conjuntos de datos; ZetaBus: 403 vehículos reconocidos; Linaje: 3
+  revisiones completas antes de publicarla, 0 frameworks; RadiografIA:
+  97,9 % de textos de personas sin falsa alarma) and the texts in
+  `src/datos/contenido.ts`.
+- /identidad: no references to decision numbers; no `--color-lienzo` row.
+- Condiciones: the four free apps' terms are not those of client projects
+  (set in each quote); «cada aplicación tiene sus propios límites»; no
+  «alojamiento modesto».
+- Privacidad: the PHIS section (Google Health API) moves to
+  /privacidad-phis, a page with no links from menu or footer, out of the
+  sitemap and noindex, because Google Cloud (project PHIS) points to it.
 
 ### Footer
 «© 2026 Antonio Blánquez» and links «Aviso legal» (/aviso-legal),

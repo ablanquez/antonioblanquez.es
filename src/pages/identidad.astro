@@ -28,7 +28,7 @@ const nombresPasos = ["Lupa", "Pantalla y móvil", "Código", "Lista con marcas"
 // Iconos de trazo (SVG en línea, mismo juego que lucide): nombre, dónde se usa y el SVG tal cual se pinta.
 const iconosTrazo: { nombre: string; uso: string; svg: string }[] = [
   ...navegacion.map((n) => ({ nombre: n.texto, uso: "Barra inferior (24 px)", svg: svg.barra[n.ancla as keyof typeof svg.barra] })),
-  ...comoTrabajo.pasos.map((p, i) => ({ nombre: nombresPasos[i], uso: `Paso «${p.titulo}» (24 px)`, svg: svg.pasos[i] })),
+  ...comoTrabajo.pasos.map((p) => ({ nombre: nombresPasos[p.icono], uso: `Paso «${p.titulo}» (24 px)`, svg: svg.pasos[p.icono] })),
   { nombre: "Luna", uso: "Botón de tema en claro (20 px)", svg: svg.tema.luna },
   { nombre: "Sol", uso: "Botón de tema en oscuro (20 px)", svg: svg.tema.sol },
   { nombre: "Flecha arriba", uso: "Botón «Arriba» (20 px)", svg: svg.arriba },
@@ -56,7 +56,7 @@ import { imagen } from "../utiles/imagenes"
 <section class="banda-identidad" data-name="espacios"><div class="columna"><h2>Espacios</h2><ul class="lista-tokens" role="list">{espacios.map((t) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span class="barra-espacio" style={`width:var(${t})`}></span></li>))}</ul></div></section>
 
 <section class="banda-identidad" data-name="medidas"><div class="columna"><h2>Medidas y cortes</h2>
-<h3>Medidas</h3><ul class="lista-tokens" role="list">{medidas.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span>{uso}</span></li>))}<li><code>--margen</code><span class="valor">20 · 40 · 80 px</span><span>Margen lateral en móvil, tableta y escritorio</span></li><li><code>ancho máximo</code><span class="valor">1120px</span><span>Contenido por encima de 1280 px (Decisión 16)</span></li></ul>
+<h3>Medidas</h3><ul class="lista-tokens" role="list">{medidas.map(([t, uso]) => (<li><code>{t}</code><span class="valor" data-token={t}></span><span>{uso}</span></li>))}<li><code>--margen</code><span class="valor">20 · 40 · 80 px</span><span>Margen lateral en móvil, tableta y escritorio</span></li><li><code>ancho máximo</code><span class="valor">1120px</span><span>Contenido por encima de 1280 px</span></li></ul>
 <h3>Cortes</h3><table class="tabla-colores tabla-identidad"><thead><tr><th scope="col">Ancho de la página</th><th scope="col">Qué cambia</th></tr></thead><tbody>{cortes.map((c) => (<tr><th scope="row" data-titulo="Ancho de la página"><code>{c.corte}</code></th><td data-titulo="Qué cambia">{c.cambia}</td></tr>))}</tbody></table>
 </div></section>
 
@@ -74,10 +74,10 @@ import { imagen } from "../utiles/imagenes"
 <p class="nota-seccion">Trazo de 2 px con extremos redondeados (juego equivalente a lucide), en <code>currentColor</code> y con <code>aria-hidden</code>: van siempre junto a su texto.</p>
 <ul class="iconos-lista" role="list">{iconosTrazo.map((i) => (<li><span class="icono-chip"><Fragment set:html={i.svg} /></span><span class="icono-nombre">{i.nombre}</span><span class="icono-uso">{i.uso}</span></li>))}<li><span class="icono-chip"><IconoGlobo /></span><span class="icono-nombre">Globo</span><span class="icono-uso">Botón «En vivo» (18 px)</span></li><li><span class="icono-chip"><IconoSobre /></span><span class="icono-nombre">Sobre</span><span class="icono-uso">«Escríbeme» y fila de correo (18-20 px)</span></li><li><span class="icono-chip"><IconoDescarga /></span><span class="icono-nombre">Descarga</span><span class="icono-uso">«Descargar CV (PDF)» (18 px)</span></li><li><span class="icono-chip"><IconoFlechaFuera /></span><span class="icono-nombre">Enlace externo</span><span class="icono-uso">Filas de LinkedIn y GitHub (20 px)</span></li></ul>
 <h3>Logotipos de terceros</h3>
-<p class="nota-seccion">Color oficial, nunca recoloreado: <code>--color-logo-terceros</code> (Decisión 7).</p>
+<p class="nota-seccion">Color oficial, nunca recoloreado: <code>--color-logo-terceros</code>.</p>
 <ul class="iconos-lista" role="list"><li><span class="icono-chip icono-marca"><IconoGitHub /></span><span class="icono-nombre">GitHub</span><span class="icono-uso">Botón «Código» y contacto</span></li><li><span class="icono-chip icono-marca"><IconoLinkedIn /></span><span class="icono-nombre">LinkedIn</span><span class="icono-uso">Contacto</span></li></ul>
 <h3>Iconos de proyecto</h3>
-<p class="nota-seccion">Cada proyecto conserva su icono (Decisión 1), a 24, 32 o 48 px; en oscuro van sobre la placa <code>--color-placa-icono</code>.</p>
+<p class="nota-seccion">Cada proyecto conserva su icono, a 24, 32 o 48 px; en oscuro van sobre la placa <code>--color-placa-icono</code>.</p>
 <ul class="iconos-lista" role="list">{proyectos.map((pr) => (<li><span class="icono-chip"><img class="icono" {...imagen(pr.icono, "32px")} alt="" width="32" height="32" /></span><span class="icono-nombre">{pr.nombre}</span><span class="icono-uso">Tarjeta, página y cajas</span></li>))}<li><span class="icono-chip"><img src="/favicon.svg" alt="" width="32" height="32" /></span><span class="icono-nombre">Icono de la web</span><span class="icono-uso">Pestaña del navegador y pantalla de inicio</span></li></ul>
 </div></section>
 

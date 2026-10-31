@@ -173,12 +173,6 @@ export const colores: Color[] = [
     oscuro: "#EDEAE4",
     uso: "Placa detrás de los iconos de proyecto, solo en oscuro",
   },
-  {
-    token: "--color-lienzo",
-    claro: "#F2F2F2",
-    oscuro: "#F2F2F2",
-    uso: "Fondo gris del modelo, fuera de los marcos. No es de la web",
-  },
 ]
 
 export const tamanos = [
@@ -300,7 +294,7 @@ export const cortes: { corte: string; cambia: string }[] = [
   { corte: "< 600 px · móvil", cambia: "Barra inferior en lugar del menú; una columna; margen lateral de 20 px" },
   { corte: "600-1023 px · tableta", cambia: "Menú en la cabecera; dos columnas de pasos; margen lateral de 40 px" },
   { corte: "≥ 1024 px · escritorio", cambia: "Dos columnas de proyectos; tres de pasos; fichas junto al texto; margen lateral de 80 px" },
-  { corte: "> 1280 px", cambia: "Contenido limitado a 1120 px y centrado; bandas a todo lo ancho (Decisión 16)" },
+  { corte: "> 1280 px", cambia: "Contenido limitado a 1120 px y centrado; bandas a todo lo ancho" },
 ]
 
 /** cubicBezier: curvas de movimiento que se usan (CSS con nombre). */

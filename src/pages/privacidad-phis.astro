@@ -1,0 +1,48 @@
+---
+/** Privacidad de PHIS (lote 6, 31/10/2026): la antigua sección 6 de la Política de privacidad, tal cual.
+ *  Es la URL que Google Cloud (proyecto PHIS) tiene como política de privacidad de la app. Página sin enlaces
+ *  desde el menú ni el pie, fuera del sitemap y sin indexar. */
+import Base from "../layouts/Base.astro"
+import Pagina from "../componentes/Pagina.astro"
+import { propietario } from "../datos/contenido"
+---
+<Base titulo={`Privacidad de PHIS | ${propietario.nombre}`} descripcion="Qué datos trata PHIS, la integración privada del titular con la Google Health API, y qué no se hace con ellos." tipo="legal" nombreCapa="privacidad-phis" noIndexar>
+<Pagina interna>
+<section class="banda-legal" data-name="privacidad-phis"><div class="columna">
+<h1>Aplicaciones privadas del titular</h1>
+<p class="entradilla">
+  Además de las cuatro aplicaciones públicas, el titular mantiene integraciones privadas de
+  uso exclusivamente personal, que <strong>no tratan datos de ningún visitante de este
+  sitio</strong>. Se describen aquí por transparencia y porque algunos proveedores exigen
+  que su funcionamiento esté publicado.
+</p>
+<h2>PHIS (Google Health API)</h2>
+<ul>
+  <li>
+    <strong>Qué hace:</strong> lee, con permisos de <strong>solo lectura</strong>, los datos
+    de actividad y salud <strong>del propio titular</strong> desde la Google Health API, para
+    volcarlos a su panel personal.
+  </li>
+  <li>
+    <strong>De quién son los datos:</strong> únicamente del titular, que es a la vez el
+    desarrollador y el único usuario de la aplicación. No hay otros usuarios y no se solicita
+    acceso a los datos de nadie más.
+  </li>
+  <li>
+    <strong>Dónde acaban:</strong> en su propio ordenador y en su propio espacio privado de
+    Notion. No se publican, no se comparten con terceros y no forman parte de este sitio ni
+    de su portafolio.
+  </li>
+  <li>
+    <strong>Qué no se hace con ellos:</strong> no se venden, no se transfieren a terceros, no
+    se usan para publicidad ni para elaborar perfiles, y no se usan para entrenar modelos de
+    inteligencia artificial.
+  </li>
+  <li>
+    <strong>Durante cuánto:</strong> mientras el titular quiera conservarlos. El acceso se
+    puede revocar en cualquier momento desde la cuenta de Google del propio titular.
+  </li>
+</ul>
+</div></section>
+</Pagina>
+</Base>
