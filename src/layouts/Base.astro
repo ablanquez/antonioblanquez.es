@@ -51,6 +51,8 @@ const imagen = new URL(imagenCompartir, Astro.site).href
     <link rel="preload" href="/fuentes/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <script is:inline set:html={temaInicial} />
     {datosEstructurados && <script is:inline type="application/ld+json" set:html={JSON.stringify(datosEstructurados)} />}
+    {/* Decisión 25: recuento de visitas con Umami Cloud (UE), sin cookies; solo en el dominio publicado y respetando «No rastrear». */}
+    <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="dcdda923-afe1-4a21-b6b1-0135b9968f8e" data-domains="antonioblanquez.es" data-do-not-track="true"></script>
   </head>
   <body>
     <div id="aviso-tema" class="aviso-tema" role="status"></div>

@@ -11,6 +11,7 @@ const marco = document.querySelector<HTMLElement>(".marco")
 
 iniciarTema()
 montarCorreos()
+contarClics()
 if (marco) {
   detalles(marco)
   menu(marco)
@@ -315,4 +316,24 @@ function montarCorreos() {
     // Si el enlace muestra la dirección (con el señuelo dentro), el lector de pantalla la oye entera y sin pausa.
     if (a.querySelector(".senuelo")) a.setAttribute("aria-label", correo)
   })
+}
+
+/** Decisión 25: cuenta los clics marcados con data-evento (y su proyecto) en Umami, si el contador ha cargado.
+ *  No usa data-umami-event porque Umami frena la navegación de los enlaces, y el CV se descarga con «download». */
+function contarClics() {
+  document.addEventListener(
+    "click",
+    (e) => {
+      const el = (e.target as Element | null)?.closest<HTMLElement>("[data-evento]")
+      if (!el) return
+      const umami = (window as unknown as { umami?: { track: (nombre: string, datos?: Record<string, string>) => void } }).umami
+      const proyecto = el.dataset.eventoProyecto
+      try {
+        umami?.track(el.dataset.evento ?? "", proyecto ? { proyecto } : undefined)
+      } catch {
+        // El recuento nunca debe romper la web.
+      }
+    },
+    true,
+  )
 }

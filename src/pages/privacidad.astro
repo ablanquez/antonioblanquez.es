@@ -19,9 +19,10 @@ const correoCifrado = cifrarCorreo(propietario.email)
 
 <div class="aviso">
   <p>
-    <strong>Resumen en tres frases.</strong> No hay analítica de ningún tipo en ninguna de
+    <strong>Resumen en cuatro frases.</strong> No hay analítica de ningún tipo en ninguna de
     las cuatro aplicaciones: ni Google Analytics, ni Plausible, ni Matomo, ni Hotjar, ni
-    píxeles de redes sociales. No se pide ni se almacena ningún dato de contacto para
+    píxeles de redes sociales. El portafolio cuenta sus visitas con Umami, sin cookies y con
+    los datos en la Unión Europea. No se pide ni se almacena ningún dato de contacto para
     navegar. La única aplicación que trata datos personales es <strong>Desplázame</strong>,
     y lo que trata se explica abajo con detalle.
   </p>
@@ -48,8 +49,8 @@ const correoCifrado = cifrarCorreo(propietario.email)
     <tbody>
       <tr>
         <td data-titulo="Aplicación">Portafolio</td>
-        <td data-titulo="Datos del visitante">Ninguno. El correo de contacto se monta en el navegador y no hay formulario. El botón «Copiar» escribe la dirección en tu portapapeles y no envía nada.</td>
-        <td data-titulo="Terceros que ven algo">Ninguno. Las fuentes, los logotipos y las capturas se sirven desde este mismo dominio.</td>
+        <td data-titulo="Datos del visitante">Ninguno que te identifique. Para contar visitas, Umami recibe la página que ves, de dónde llegas, el idioma, el tamaño de pantalla y los botones que pulsas; con tu IP calcula el país aproximado y una huella que cambia cada mes, y no la guarda. El correo de contacto se monta en el navegador y no hay formulario. El botón «Copiar» escribe la dirección en tu portapapeles y no envía nada.</td>
+        <td data-titulo="Terceros que ven algo">Umami Software, Inc., que cuenta las visitas como encargado del tratamiento, con los datos alojados en la Unión Europea y guardados seis meses. Las fuentes, los logotipos y las capturas se sirven desde este mismo dominio.</td>
         <td data-titulo="Qué guarda en tu navegador">Una clave, <code>tema</code>, solo si eliges un tema distinto del de tu sistema.</td>
       </tr>
       <tr>
@@ -159,6 +160,11 @@ const correoCifrado = cifrarCorreo(propietario.email)
     <strong>Ubicación y matrícula en Desplázame:</strong> tu consentimiento, que das al
     autorizar la ubicación o al escribir la matrícula, y que puedes retirar dejando de usar
     esa función o revocando el permiso en el navegador. Finalidad: calcular lo que pides.
+  </li>
+  <li>
+    <strong>Recuento de visitas del portafolio:</strong> interés legítimo en saber cómo se usa
+    la web, con estadísticas que no identifican a nadie. Puedes oponerte activando «No
+    rastrear» (Do Not Track) en tu navegador: el contador lo respeta y no envía nada.
   </li>
   <li>
     <strong>Cookie de sesión en Linaje:</strong> necesaria para prestar el servicio que

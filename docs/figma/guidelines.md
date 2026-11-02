@@ -678,6 +678,17 @@ logs and mistakes. Faults of third-party sources stay. Applied:
   /privacidad-phis, a page with no links from menu or footer, out of the
   sitemap and noindex, because Google Cloud (project PHIS) points to it.
 
+**Decision 25 (signed 02/11/2026): visit counting.** The home page and every
+other page count visits with Umami Cloud (Umami Software, Inc., EU data
+region, six months): no cookies, nothing written in the browser, only on
+antonioblanquez.es and never when the browser sends «Do Not Track». The
+script loads from cloud.umami.is and sends to gateway.umami.is; those two
+are the only exceptions to «everything from this domain» (Decisions 17 and
+23). Clicks counted, by `data-evento`: `cv`, `escribeme`, `copiar-correo`,
+`linkedin`, `github`, and `en-vivo` / `codigo` with the project. Google
+Analytics was ruled out: it needs a cookie banner and loses whoever rejects
+it; search data comes from Search Console. The privacy policy says it.
+
 ### Footer
 «© 2026 Antonio Blánquez» and links «Aviso legal» (/aviso-legal),
 «Privacidad» (/privacidad), «Condiciones» (/condiciones),

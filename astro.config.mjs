@@ -19,11 +19,12 @@ export default defineConfig({
   trailingSlash: "never",
   build: { format: "file" },
   // Ronda 5: solo se ejecuta lo que sale de este dominio y los tres scripts del tema (por su huella).
+  // Decisión 25 (02/11/2026): y el contador de visitas de Umami (script en cloud.umami.is, envío a gateway.umami.is).
   // Los atributos style del modelo (colores de cada proyecto) se permiten: afecta a estilos, nunca a código.
   security: {
     csp: {
-      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'none'"],
-      scriptDirective: { resources: ["'self'"], hashes: huellas },
+      directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self' https://gateway.umami.is", "object-src 'none'", "base-uri 'self'", "form-action 'none'"],
+      scriptDirective: { resources: ["'self'", "https://cloud.umami.is"], hashes: huellas },
       styleDirective: { resources: ["'self'", { resource: "'unsafe-inline'", kind: "attribute" }] },
     },
   },

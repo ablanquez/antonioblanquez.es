@@ -42,5 +42,7 @@ direcciones antiguas con «.html», da la página 404 propia, comprime, pone la 
   y las indicaciones para los buscadores.
 - `src/pages/privacidad-phis.astro`: la privacidad de PHIS, una integración privada (Google Health API). Es la
   dirección que tiene Google Cloud; no se enlaza desde la web, no está en el sitemap y no se indexa.
+- Visitas: Umami Cloud (UE, sin cookies), cargado en `src/layouts/Base.astro`. Los clics con `data-evento` los
+  cuenta `src/scripts/sitio.ts` (`contarClics`). Panel: cloud.umami.is.
 - `src/scripts/enLinea.ts`: los tres scripts que van dentro de la página (el tema). `astro.config.mjs` calcula su
   huella para la política de seguridad (CSP); si se cambian ahí, la huella se actualiza sola al construir.
