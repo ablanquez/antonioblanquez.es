@@ -48,3 +48,9 @@ direcciones antiguas con «.html», da la página 404 propia, comprime, pone la 
   cuenta `src/scripts/sitio.ts` (`contarClics`). Panel: cloud.umami.is.
 - `src/scripts/enLinea.ts`: los tres scripts que van dentro de la página (el tema). `astro.config.mjs` calcula su
   huella para la política de seguridad (CSP); si se cambian ahí, la huella se actualiza sola al construir.
+
+## Licencia
+
+Este repositorio es público para que se vea cómo está hecha la web. No tiene licencia de uso: el código, el
+diseño, los textos y las imágenes son de Antonio Blánquez, con todos los derechos reservados. Las cuatro
+aplicaciones sí son de código abierto (Apache 2.0), cada una en su repositorio.
