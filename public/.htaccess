@@ -5,6 +5,18 @@
 # redirigen con 301 a la limpia; la limpia sirve el archivo .html por dentro.
 RewriteEngine On
 
+# www.antonioblanquez.es → antonioblanquez.es (Decisión 26: una sola dirección para Google)
+RewriteCond %{HTTP_HOST} ^www\.antonioblanquez\.es$ [NC]
+RewriteRule ^ https://antonioblanquez.es%{REQUEST_URI} [R=301,L,NE]
+
+# /proyectos/ es una carpeta sin página propia → la sección Proyectos de la portada
+RewriteRule ^proyectos/?$ /#proyectos [R=301,L,NE]
+
+# Barra final → sin barra (/proyectos/zetabus/ → /proyectos/zetabus). Sin esta regla, la de
+# abajo entraba en bucle y el servidor daba error 500 (Decisión 26).
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
 # /index.html o /index → /
 RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
 RewriteRule ^ / [R=301,L]

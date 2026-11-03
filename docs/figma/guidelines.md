@@ -689,6 +689,17 @@ are the only exceptions to «everything from this domain» (Decisions 17 and
 Analytics was ruled out: it needs a cookie banner and loses whoever rejects
 it; search data comes from Search Console. The privacy policy says it.
 
+**Decision 26 (signed 03/11/2026): search and AI search audit.** One address
+per page: `www.` redirects (301) to antonioblanquez.es; a trailing slash
+redirects to the address without it (it used to give a 500 error); the
+`/proyectos/` folder redirects to `/#proyectos`. The home page carries
+`WebSite` structured data (name and url, for the site name Google shows) next
+to `Person`, which adds the city already visible in Contact (Zaragoza, ES);
+still no job title or description, and the photo goes in as `image` when it
+exists. A project whose line passes about 155 characters gets a shorter
+search description made only from its own words (RadiografIA). No `llms.txt`:
+Google states AI features need no extra technical requirements.
+
 ### Footer
 «© 2026 Antonio Blánquez» and links «Aviso legal» (/aviso-legal),
 «Privacidad» (/privacidad), «Condiciones» (/condiciones),
@@ -700,7 +711,10 @@ it; search data comes from Search Console. The privacy policy says it.
 - Projects: «<Name>: <what it is> | Antonio Blánquez», with «rasgos de
   estilo de los asistentes de IA», «cómo ir de un portal a otro en
   Zaragoza», «visor en vivo del autobús urbano de Zaragoza» and «árbol
-  genealógico autoalojado» — description: the project line.
+  genealógico autoalojado» — description: the project line (RadiografIA:
+  «Señala los rasgos de estilo que los asistentes de IA dejan más que las
+  personas: 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del
+  navegador.», Decision 26).
 - «Identidad visual | Antonio Blánquez» — «Colores, tipografía, espacios,
   esquinas, sombras y movimiento de la web, con sus valores y contrastes.»
 - «Aviso legal», «Política de privacidad», «Condiciones del servicio» +

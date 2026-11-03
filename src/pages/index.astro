@@ -36,8 +36,16 @@ const correoCifrado = cifrarCorreo(propietario.email)
 const [correoUsuario, correoDominio] = partesCorreo(propietario.email)
 // SEO (aprobado el 29/10/2026): las dos primeras frases del texto de presentación.
 const descripcionPortada = propietario.fraseLarga.split(". ").slice(0, 2).join(". ") + "."
-// Datos estructurados (Ronda 3): la web es de una persona, con sus perfiles. Sin cargo ni descripción.
-const persona = { "@context": "https://schema.org", "@type": "Person", name: propietario.nombre, url: "https://antonioblanquez.es/", sameAs: [propietario.linkedin, propietario.github] }
+// Datos estructurados (Ronda 3 y Decisión 26): el sitio (WebSite, para el nombre que Google muestra
+// en los resultados) y la persona, con sus perfiles y su ciudad, que ya es visible en Contacto.
+// Sin cargo ni descripción. La foto (image) entra cuando esté.
+const persona = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", name: propietario.nombre, url: "https://antonioblanquez.es/" },
+    { "@type": "Person", name: propietario.nombre, url: "https://antonioblanquez.es/", address: { "@type": "PostalAddress", addressLocality: "Zaragoza", addressCountry: "ES" }, sameAs: [propietario.linkedin, propietario.github] },
+  ],
+}
 const linkedin = partir(c.linkedin.dato)
 const github = partir(c.github.dato)
 ---
