@@ -38,6 +38,15 @@ const tituloSeo: Record<string, string> = {
 const descripcionSeo: Record<string, string> = {
   radiografia: "Señala los rasgos de estilo que los asistentes de IA dejan más que las personas: 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del navegador.",
 }
+// Ruta de navegación para Google (Decisión 27): portada › proyecto.
+const migas = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: propietario.nombre, item: "https://antonioblanquez.es/" },
+    { "@type": "ListItem", position: 2, name: proyecto.nombre },
+  ],
+}
 const pagina = paginasProyecto[proyecto.slug] as PaginaProyectoDatos | undefined
 const tecnologias = pagina?.tecnologias ?? []
 const datos = iconosDatos.map((d) => ({ titulo: d.titulo, valor: (pagina?.[d.campo] as string | undefined) ?? pendiente, paths: d.paths }))
@@ -54,7 +63,7 @@ const cajas = [
   { pr: siguiente, texto: "Proyecto siguiente", clase: "caja-siguiente", capa: "proyecto-siguiente" },
 ]
 ---
-<Base titulo={`${proyecto.nombre}: ${tituloSeo[proyecto.slug]} | ${propietario.nombre}`} descripcion={descripcionSeo[proyecto.slug] ?? proyecto.texto} tipo="proyecto" nombreCapa={`proyecto-${proyecto.slug}`} imagenCompartir={`/imagenes/${proyecto.slug}/compartir.jpg`}>
+<Base titulo={`${proyecto.nombre}: ${tituloSeo[proyecto.slug]} | ${propietario.nombre}`} descripcion={descripcionSeo[proyecto.slug] ?? proyecto.texto} tipo="proyecto" nombreCapa={`proyecto-${proyecto.slug}`} imagenCompartir={`/imagenes/${proyecto.slug}/compartir.jpg`} datosEstructurados={migas}>
 <Pagina>
 <section class="entrada" data-name="entrada"><div class="volver" data-name="volver"><a href="/#proyectos"><Fragment set:html={svg.volverPagina} />Volver a proyectos</a></div><div class="composicion" data-name="composicion"><div class="ventana" data-name="ventana-navegador"><div class="ventana-barra" data-name="barra-navegador"><span class="ventana-puntos" aria-hidden="true"><span></span><span></span><span></span></span><span class="ventana-dominio">{dominio}</span></div><div class="composicion-zona" data-name="captura-proyecto"><img class="composicion-escritorio" {...imagen(proyecto.captura.src, tamanos.capturaProyecto)} alt={proyecto.captura.alt} /><div class="marco-movil" data-name="captura-movil"><img {...imagen(`/imagenes/movil-${proyecto.slug}.png`, tamanos.movilProyecto)} alt="" /></div></div></div></div><div class="cabecera-proyecto columna" data-name="presentacion-proyecto"><div class="franja" style={`background:var(--color-proyecto-${proyecto.slug})`} data-name="franja-proyecto"></div><ul class="etiquetas" role="list" aria-label="Tecnologías">{tecnologias.length === 0 ? <li>{pendiente}</li> : tecnologias.map((t) => <li>{t}</li>)}</ul><div class="titulo-con-icono" data-name="titulo-proyecto"><img class="icono" {...imagen(proyecto.icono, "48px")} alt="" width="48" height="48" data-name="icono-proyecto" /><h1 style={colorProyecto(proyecto.slug)}>{proyecto.nombre}</h1></div><dl class="datos-proyecto" aria-label="Datos del proyecto" data-name="datos-proyecto">{datos.map((d) => (<div><dt class="sr-only">{d.titulo}</dt><dd><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{d.paths.map((x) => <path d={x}></path>)}</svg>{d.valor}</dd></div>))}</dl><p class="entradilla">{proyecto.texto}</p><ul class="botones-tarjeta" role="list" data-name="botones-proyecto"><li><a class="boton-primario" href={proyecto.enVivo} {...fuera} data-evento="en-vivo" data-evento-proyecto={proyecto.slug}><IconoGlobo />{proyecto.etiquetaEnVivo}<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a class="boton-secundario boton-marca" href={proyecto.codigo} {...fuera} data-evento="codigo" data-evento-proyecto={proyecto.slug}><IconoGitHub />Código<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div></section>
 

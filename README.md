@@ -39,7 +39,9 @@ direcciones antiguas con «.html», da la página 404 propia, comprime, pone la 
   las anteriores en el marco de la web (se publican como `/aviso-legal`, etc.).
 - `src/pages/identidad.astro` y `src/datos/identidad.ts`: la guía de estilo (/identidad), enlazada desde el pie.
 - `src/pages/404.astro`, `src/pages/sitemap.xml.ts` y `public/robots.txt`: la página de error, el mapa del sitio
-  y las indicaciones para los buscadores.
+  y las indicaciones para los buscadores. El sitemap lleva la fecha del último commit de cada página
+  (`src/datos/fechas.mjs`); por eso el workflow descarga el historial completo (`fetch-depth: 0`).
+- `src/pages/llms.txt.ts`: `/llms.txt`, el resumen de la web para asistentes de IA, hecho con los mismos textos.
 - `src/pages/privacidad-phis.astro`: la privacidad de PHIS, una integración privada (Google Health API). Es la
   dirección que tiene Google Cloud; no se enlaza desde la web, no está en el sitemap y no se indexa.
 - Visitas: Umami Cloud (UE, sin cookies), cargado en `src/layouts/Base.astro`. Los clics con `data-evento` los

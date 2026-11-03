@@ -697,8 +697,21 @@ redirects to the address without it (it used to give a 500 error); the
 to `Person`, which adds the city already visible in Contact (Zaragoza, ES);
 still no job title or description, and the photo goes in as `image` when it
 exists. A project whose line passes about 155 characters gets a shorter
-search description made only from its own words (RadiografIA). No `llms.txt`:
-Google states AI features need no extra technical requirements.
+search description made only from its own words (RadiografIA). Google states
+AI features need no extra technical requirements (llms.txt: Decision 27).
+
+**Decision 27 (signed 03/11/2026): llms.txt, sitemap dates and breadcrumb.**
+Antonio chose to serve `/llms.txt` anyway (llmstxt.org format): it is built
+from the same texts as the site (statement, role, place, closing paragraph,
+projects, how I work, about me, contact links, legal pages), with no text of
+its own and no email address. The sitemap carries `lastmod`: the date of the
+last commit that touched each page's content; with a shallow clone it
+carries no dates rather than wrong ones, so the publish workflow checks out
+the full history. Project pages carry a `BreadcrumbList` (home › project).
+Not done, on purpose: `Content-Signal` in robots.txt (not a standard;
+Lighthouse marks it), Organization or LocalBusiness (the site is a person's),
+the email in structured data (it stays disguised), Markdown versions, Link
+headers, WebMCP and an MCP server card (meant for sites where agents act).
 
 ### Footer
 «© 2026 Antonio Blánquez» and links «Aviso legal» (/aviso-legal),
