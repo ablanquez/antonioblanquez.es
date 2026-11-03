@@ -19,6 +19,7 @@ const anchos: Record<string, number[]> = {
   "/imagenes/zetabus/home-escritorio": [640, 1120, 2240],
   "/imagenes/zetabus/logo": [96, 144],
   "/imagenes/zetabus/parada-escritorio": [640, 1120, 1440],
+  "/imagenes/foto-antonio": [160, 320, 480, 720],
   "/imagenes/movil-desplazame": [280, 390],
   "/imagenes/movil-linaje": [280, 544],
   "/imagenes/movil-radiografia": [280, 560],
@@ -32,6 +33,8 @@ export const tamanos = {
   galeria: "(min-width: 1024px) min(518px, calc(50vw - 122px)), (min-width: 600px) calc(50vw - 82px), calc(100vw - 90px)",
   movilPortada: "(min-width: 1024px) 121px, 215px",
   movilProyecto: "(min-width: 1024px) 267px, 223px",
+  fotoPresentacion: "(min-width: 600px) 240px, 160px",
+  fotoContacto: "64px",
 }
 
 /** src (la variante de hasta 1120 px), srcset y sizes; las que no tienen variantes (SVG) quedan igual. */

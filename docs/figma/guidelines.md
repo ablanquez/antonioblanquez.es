@@ -550,8 +550,7 @@ hard rule 9 as stated here. Copy as in «Contact».
 - Left column, left-aligned, in this order: name (`--fuente-firma` 700,
   `--tamano-firma`, `--color-titulo`, one line); 16 px below, the 64 px
   photo circle with a 2 px `--color-decoracion` ring, centred in the
-  column (placeholder «[foto]» with `aria-hidden` until the new photo,
-  which takes `alt=""`); 16 px below, the role (`--tamano-cuerpo`,
+  column (the photo since Decision 28, `alt=""`, inside an `aria-hidden` circle); 16 px below, the role (`--tamano-cuerpo`,
   `--color-texto`); 16 px below, the place, and 16 px below, the response
   time (16 px, `--color-texto-secundario`). Role and response time use
   `text-wrap: balance`; a no-break space joins «24» and «horas».
@@ -712,6 +711,16 @@ Not done, on purpose: `Content-Signal` in robots.txt (not a standard;
 Lighthouse marks it), Organization or LocalBusiness (the site is a person's),
 the email in structured data (it stays disguised), Markdown versions, Link
 headers, WebMCP and an MCP server card (meant for sites where agents act).
+
+**Decision 28 (signed 03/11/2026): the photo.** Antonio's photo fills the
+two circles: the presentation (`alt` «Antonio Blánquez») and the contact
+card (`alt=""`, the name is beside it), replacing «[foto pendiente]» and
+«[foto]». Made from his original: the figure cut out from the background,
+the background replaced by the same landscape strongly blurred, framed on
+the axis of the head with the top of the head at 16 % of the circle and the
+shoulders reaching its edge; no camera metadata (no GPS). WebP at 160, 320,
+480 and 720 px with `srcset`. The same picture is the `image` of `Person`,
+the CV photo and the LinkedIn and GitHub profile picture.
 
 ### Footer
 «© 2026 Antonio Blánquez» and links «Aviso legal» (/aviso-legal),
