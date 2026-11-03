@@ -1,0 +1,43 @@
+# Antonio Blánquez
+
+> Convierto procesos manuales en aplicaciones web. Ayudo a empresas que pierden horas en procesos manuales. Llevo más de quince años dentro de esos procesos: banca, gestión documental, comercio electrónico. Ahora, además, construyo la herramienta: defino qué hace, la diseño y dirijo a la IA que escribe el código.
+
+Idea, diseño y verificación · código con IA · en solitario. Zaragoza · en remoto o presencial.
+
+Cada etapa de mi carrera siguió un salto de la tecnología: el escáner, el comercio en línea, la banca digital. El siguiente es que cada empresa tenga procesos y aplicaciones a su medida, para que el trabajo repetitivo lo haga un proceso automático y la gente se dedique a lo que no se puede automatizar. Si tu empresa está en ese punto, o buscas a alguien que lo haga desde dentro, hablemos: estoy abierto a proyectos como autónomo y a incorporarme a un equipo.
+
+## Proyectos
+
+- [RadiografIA](https://antonioblanquez.es/proyectos/radiografia): Pon tu texto a contraluz: señala los rasgos de estilo que los asistentes de IA dejan más que las personas. 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del navegador. En vivo: https://radiografia.antonioblanquez.es · Código: https://github.com/ablanquez/radiografia
+- [Desplázame](https://antonioblanquez.es/proyectos/desplazame): Cómo ir de un portal a otro en Zaragoza: 8 modos de transporte con motor de rutas propio. En vivo: https://desplazame.antonioblanquez.es · Código: https://github.com/ablanquez/desplazame
+- [ZetaBus](https://antonioblanquez.es/proyectos/zetabus): Visor en vivo del autobús urbano de Zaragoza: llegadas por parada, flota en el mapa y desvíos detectados cruzando cuatro fuentes oficiales. En vivo: https://zetabus.antonioblanquez.es · Código: https://github.com/ablanquez/zetabus
+- [Linaje](https://antonioblanquez.es/proyectos/linaje): Tu árbol genealógico, autoalojado y bajo tu control: instalador guiado, parentesco automático, copias de seguridad y exportación completa. Demo en vivo: https://linaje.antonioblanquez.es · Código: https://github.com/ablanquez/linaje
+
+## Cómo trabajo
+
+- **Entender el problema**: Primero, qué hace falta y para quién. Si los datos vienen de fuera, compruebo qué dice cada fuente antes de escribir una línea de código. Si algo de lo que me pides choca con una norma, con la accesibilidad o con los datos disponibles, te lo digo con el porqué y te propongo cómo hacerlo.
+- **Diseñar en tres tamaños**: Ordenador, tableta y móvil desde el principio, con las pautas de accesibilidad WCAG 2.2 en nivel AA. Cada decisión de diseño la veo aplicada antes de darla por buena, y los colores llevan su contraste calculado.
+- **Construir por tandas**: La IA escribe el código a partir de encargos escritos, y reviso cada tanda antes de pasar a la siguiente. Primero va lo que no puede fallar; la pantalla, después.
+- **Cerrar**: Cada proyecto se cierra con una revisión completa en seis frentes: código, pruebas, interfaz, servidor, experiencia de uso y documentación.
+- **Mantener**: Después de la entrega sigo ahí. Si algo falla o llega un aviso de seguridad, lo reviso, lo arreglo y lo compruebo en la web publicada.
+
+## Sobre mí
+
+- **2007-2012 · Fundación DFA**: En la Fundación DFA (Disminuidos Físicos de Aragón) digitalizamos el archivo de casi 25.000 socios para que las trabajadoras sociales y el equipo de empleo lo tuvieran a un clic. Después fui mando intermedio de un departamento de casi 100 personas, con proyectos como el archivo de personal de la DGA y la digitalización del SEPE en más de 20 provincias, junto a Accenture y ECI.
+- **2012-2017 · Amazon**: Vendí como autónomo casi 1.000 referencias de ferretería y accesorios de móvil, con más de 10.000 ventas gestionadas de principio a fin. Los precios, las comisiones y los portes los calculaba en Excel y los subía por CSV.
+- **2017-2025 · Iberalbion**: En Iberalbion, filial de WiZink, un banco sin oficinas, actualizaba cerca de 15.000 expedientes de KYC al mes (algunos meses, más), revisaba con backtesting procesos automáticos como el bloqueo de tarjetas o los cargos, y conciliaba las operaciones que el sistema no aceptaba. Al buscarles otra vía de entrada, a veces encontraba fallos que después se corregían.
+- **2025-2026 · Formación**: Dos másteres, uno de IA y otro de Frontend 360º: la base para pasar de usar las herramientas a construirlas.
+- **Desde 2026 · Aplicaciones propias**: Desde junio de 2026 desarrollo aplicaciones web: las cuatro de esta página y este portafolio. Las construyo en solitario: la IA escribe el código en el lenguaje que haga falta; desmontar el problema en piezas y volver a montarlo bien lo pongo yo, después de más de quince años haciéndolo.
+
+## Contacto
+
+- [LinkedIn](https://www.linkedin.com/in/antonioblanquez/)
+- [GitHub](https://github.com/ablanquez)
+- [Correo](https://antonioblanquez.es/#contacto)
+
+## Optional
+
+- [Aviso legal](https://antonioblanquez.es/aviso-legal)
+- [Privacidad](https://antonioblanquez.es/privacidad)
+- [Condiciones](https://antonioblanquez.es/condiciones)
+- [Identidad visual](https://antonioblanquez.es/identidad)

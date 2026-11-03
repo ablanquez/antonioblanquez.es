@@ -34,6 +34,9 @@ RewriteRule ^(.+)$ $1.html [L]
 # Página de error propia, con código 404 de verdad.
 ErrorDocument 404 /404.html
 
+# robots.txt y llms.txt en UTF-8, para que las tildes se lean bien (Decisión 27).
+AddCharset utf-8 .txt
+
 # ── Compresión (Ronda 4) ──────────────────────────────────────────────────────────────
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
