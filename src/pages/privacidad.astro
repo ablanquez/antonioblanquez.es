@@ -19,10 +19,10 @@ const correoCifrado = cifrarCorreo(propietario.email)
 
 <div class="aviso">
   <p>
-    <strong>Resumen en cuatro frases.</strong> No hay analítica de ningún tipo en ninguna de
-    las cuatro aplicaciones: ni Google Analytics, ni Plausible, ni Matomo, ni Hotjar, ni
-    píxeles de redes sociales. El portafolio cuenta sus visitas con Umami, sin cookies y con
-    los datos en la Unión Europea. No se pide ni se almacena ningún dato de contacto para
+    <strong>Resumen en cuatro frases.</strong> No hay Google Analytics, Plausible, Matomo,
+    Hotjar ni píxeles de redes sociales en ninguna parte. El portafolio y ZetaBus cuentan sus
+    visitas con Umami, sin cookies y con los datos en la Unión Europea; RadiografIA, Desplázame
+    y Linaje no tienen analítica de ningún tipo. No se pide ni se almacena ningún dato de contacto para
     navegar. La única aplicación que trata datos personales es <strong>Desplázame</strong>,
     y lo que trata se explica abajo con detalle.
   </p>
@@ -61,8 +61,8 @@ const correoCifrado = cifrarCorreo(propietario.email)
       </tr>
       <tr>
         <td data-titulo="Aplicación">ZetaBus</td>
-        <td data-titulo="Datos del visitante">Ninguno. Es una web estática; los enlaces a GitHub y a transportes.gob.es son enlaces, no recursos cargados.</td>
-        <td data-titulo="Terceros que ven algo">Ninguno.</td>
+        <td data-titulo="Datos del visitante">Ninguno que te identifique. Para contar visitas, Umami recibe lo mismo que en el portafolio: la página que ves, de dónde llegas, el idioma y el tamaño de pantalla; con tu IP calcula el país aproximado y una huella que cambia cada mes, y no la guarda. Las llegadas del autobús las pregunta el servidor, no tu navegador. Los enlaces a GitHub y a transportes.gob.es son enlaces, no recursos cargados.</td>
+        <td data-titulo="Terceros que ven algo">Umami Software, Inc., que cuenta las visitas igual que en el portafolio. Y OpenStreetMap, que sirve las imágenes del mapa de cada parada y por tanto recibe tu IP; solo el origen de la página, no la parada que miras.</td>
         <td data-titulo="Qué guarda en tu navegador">Nada.</td>
       </tr>
       <tr>
@@ -162,8 +162,8 @@ const correoCifrado = cifrarCorreo(propietario.email)
     esa función o revocando el permiso en el navegador. Finalidad: calcular lo que pides.
   </li>
   <li>
-    <strong>Recuento de visitas del portafolio:</strong> interés legítimo en saber cómo se usa
-    la web, con estadísticas que no identifican a nadie. Puedes oponerte activando «No
+    <strong>Recuento de visitas del portafolio y de ZetaBus:</strong> interés legítimo en saber
+    cómo se usan, con estadísticas que no identifican a nadie. Puedes oponerte activando «No
     rastrear» (Do Not Track) en tu navegador: el contador lo respeta y no envía nada.
   </li>
   <li>
