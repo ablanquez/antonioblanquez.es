@@ -8,7 +8,7 @@ Cada etapa de mi carrera siguió un salto de la tecnología: el escáner, el com
 
 ## Proyectos
 
-- [RadiografIA](https://antonioblanquez.es/proyectos/radiografia): Pon tu texto a contraluz: señala los rasgos de estilo que los asistentes de IA dejan más que las personas. 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del navegador. En vivo: https://radiografia.antonioblanquez.es · Código: https://github.com/ablanquez/radiografia
+- [RadiografIA](https://antonioblanquez.es/proyectos/radiografia): Pon tu texto a contraluz: señala los rasgos de estilo que los asistentes de IA dejan más que las personas. 50 reglas con sus fuentes, 6 géneros calibrados; el texto no sale del navegador. En vivo: https://radiografia.antonioblanquez.es · Código: https://github.com/ablanquez/radiografia
 - [Desplázame](https://antonioblanquez.es/proyectos/desplazame): Cómo ir de un portal a otro en Zaragoza: 8 modos de transporte con motor de rutas propio. En vivo: https://desplazame.antonioblanquez.es · Código: https://github.com/ablanquez/desplazame
 - [ZetaBus](https://antonioblanquez.es/proyectos/zetabus): Visor en vivo del autobús urbano de Zaragoza: llegadas por parada, flota en el mapa y desvíos detectados cruzando cuatro fuentes oficiales. En vivo: https://zetabus.antonioblanquez.es · Código: https://github.com/ablanquez/zetabus
 - [Linaje](https://antonioblanquez.es/proyectos/linaje): Tu árbol genealógico, autoalojado y bajo tu control: instalador guiado, parentesco automático, copias de seguridad y exportación completa. Demo en vivo: https://linaje.antonioblanquez.es · Código: https://github.com/ablanquez/linaje
