@@ -20,9 +20,8 @@ const correoCifrado = cifrarCorreo(propietario.email)
 <div class="aviso">
   <p>
     <strong>Resumen en cuatro frases.</strong> No hay Google Analytics, Plausible, Matomo,
-    Hotjar ni píxeles de redes sociales en ninguna parte. El portafolio y ZetaBus cuentan sus
-    visitas con Umami, sin cookies y con los datos en la Unión Europea; RadiografIA, Desplázame
-    y Linaje no tienen analítica de ningún tipo. No se pide ni se almacena ningún dato de contacto para
+    Hotjar ni píxeles de redes sociales en ninguna parte. El portafolio y las cuatro aplicaciones
+    cuentan sus visitas con Umami, sin cookies y con los datos en la Unión Europea. No se pide ni se almacena ningún dato de contacto para
     navegar. La única aplicación que trata datos personales es <strong>Desplázame</strong>,
     y lo que trata se explica abajo con detalle.
   </p>
@@ -55,8 +54,8 @@ const correoCifrado = cifrarCorreo(propietario.email)
       </tr>
       <tr>
         <td data-titulo="Aplicación">RadiografIA</td>
-        <td data-titulo="Datos del visitante">Ninguno. <strong>El texto que analizas no sale de tu navegador.</strong></td>
-        <td data-titulo="Terceros que ven algo">Ninguno.</td>
+        <td data-titulo="Datos del visitante">Ninguno que te identifique. Para contar visitas, Umami recibe lo mismo que en ZetaBus. <strong>El texto que analizas no sale de tu navegador</strong>, y Umami no lo recibe.</td>
+        <td data-titulo="Terceros que ven algo">Umami Software, Inc., que cuenta las visitas igual que en el portafolio.</td>
         <td data-titulo="Qué guarda en tu navegador">Nada.</td>
       </tr>
       <tr>
@@ -67,14 +66,14 @@ const correoCifrado = cifrarCorreo(propietario.email)
       </tr>
       <tr>
         <td data-titulo="Aplicación">Desplázame</td>
-        <td data-titulo="Datos del visitante"><strong>Ubicación</strong> (si la autorizas) y <strong>matrícula</strong> (si consultas el distintivo ambiental). Ver el apartado 3.</td>
-        <td data-titulo="Terceros que ven algo">OpenStreetMap y CARTO, que sirven las imágenes del mapa y por tanto reciben tu IP.</td>
+        <td data-titulo="Datos del visitante">Para contar visitas, Umami recibe lo mismo que en ZetaBus; la ruta que buscas y la matrícula no van en la dirección de la página, así que no las recibe. <strong>Ubicación</strong> (si la autorizas) y <strong>matrícula</strong> (si consultas el distintivo ambiental). Ver el apartado 3.</td>
+        <td data-titulo="Terceros que ven algo">Umami Software, Inc., que cuenta las visitas igual que en el portafolio. Y OpenStreetMap y CARTO, que sirven las imágenes del mapa y por tanto reciben tu IP.</td>
         <td data-titulo="Qué guarda en tu navegador">Una clave, <code>desplazame:tema</code>, con tu preferencia de tema claro u oscuro.</td>
       </tr>
       <tr>
         <td data-titulo="Aplicación">Linaje</td>
-        <td data-titulo="Datos del visitante">La demo pública trae <strong>datos ficticios</strong>, declarados como tales en la propia aplicación. Para usarla con datos reales hay que identificarse.</td>
-        <td data-titulo="Terceros que ven algo">Ninguno.</td>
+        <td data-titulo="Datos del visitante">La demo pública trae <strong>datos ficticios</strong>, declarados como tales en la propia aplicación. Para usarla con datos reales hay que identificarse. Para contar visitas en la demo, Umami recibe lo mismo que en ZetaBus.</td>
+        <td data-titulo="Terceros que ven algo">Umami Software, Inc., solo en la demo de este dominio. Una instalación propia no lo lleva salvo que lo actives.</td>
         <td data-titulo="Qué guarda en tu navegador">Una cookie de sesión, solo si te identificas. Es técnica: mantiene la sesión abierta y no sirve para seguirte.</td>
       </tr>
     </tbody>
@@ -162,7 +161,7 @@ const correoCifrado = cifrarCorreo(propietario.email)
     esa función o revocando el permiso en el navegador. Finalidad: calcular lo que pides.
   </li>
   <li>
-    <strong>Recuento de visitas del portafolio y de ZetaBus:</strong> interés legítimo en saber
+    <strong>Recuento de visitas del portafolio y de las cuatro aplicaciones:</strong> interés legítimo en saber
     cómo se usan, con estadísticas que no identifican a nadie. Puedes oponerte activando «No
     rastrear» (Do Not Track) en tu navegador: el contador lo respeta y no envía nada.
   </li>

@@ -140,7 +140,7 @@ translate, rephrase, shorten or add copy.
 1. **RadiografIA** · colour `#332288`
    «Pon tu texto a contraluz: señala los rasgos de estilo que los
    asistentes de IA dejan más que las personas. 50 reglas con sus fuentes,
-   6 géneros calibrados; nada sale del navegador.»
+   6 géneros calibrados; el texto no sale del navegador.»
    En vivo: https://radiografia.antonioblanquez.es ·
    Código: https://github.com/ablanquez/radiografia
 2. **Desplázame** · colour `#2563eb`
@@ -735,8 +735,8 @@ the CV photo and the LinkedIn and GitHub profile picture.
   Zaragoza», «visor en vivo del autobús urbano de Zaragoza» and «árbol
   genealógico autoalojado» — description: the project line (RadiografIA:
   «Señala los rasgos de estilo que los asistentes de IA dejan más que las
-  personas: 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del
-  navegador.», Decision 26).
+  personas: 50 reglas con sus fuentes; el texto no sale del navegador.»,
+  Decision 26).
 - «Identidad visual | Antonio Blánquez» — «Colores, tipografía, espacios,
   esquinas, sombras y movimiento de la web, con sus valores y contrastes.»
 - «Aviso legal», «Política de privacidad», «Condiciones del servicio» +

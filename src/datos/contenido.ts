@@ -33,7 +33,7 @@ export const proyectos: Proyecto[] = [
     },
     tecnologia: "[texto pendiente]",
     texto:
-      "Pon tu texto a contraluz: señala los rasgos de estilo que los asistentes de IA dejan más que las personas. 50 reglas con sus fuentes, 6 géneros calibrados; nada sale del navegador.",
+      "Pon tu texto a contraluz: señala los rasgos de estilo que los asistentes de IA dejan más que las personas. 50 reglas con sus fuentes, 6 géneros calibrados; el texto no sale del navegador.",
     etiquetaEnVivo: "En vivo",
     enVivo: "https://radiografia.antonioblanquez.es",
     codigo: "https://github.com/ablanquez/radiografia",

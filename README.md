@@ -13,9 +13,10 @@ Sitio estático hecho con [Astro](https://astro.build), clonado píxel a píxel 
 | `pnpm build` | Genera la web en `dist/` |
 | `pnpm preview` | Sirve `dist/` para revisarla |
 
-Para publicar, se sube el contenido de `dist/` (también `.htaccess`, que empieza por punto) a `public_html`
-en Hostinger. El `.htaccess` sirve las páginas sin «.html» (`/proyectos/desplazame`), redirige con 301 las
-direcciones antiguas con «.html», da la página 404 propia, comprime, pone la caché y las cabeceras de seguridad.
+Publicar es automático: cada push a `main` lanza `.github/workflows/publicar.yml`, que construye la web con
+`pnpm build` y deja `dist/` en la rama `publicar`. Hostinger trae esa rama por Git a `public_html`.
+El `.htaccess` (va dentro de `dist/`) sirve las páginas sin «.html» (`/proyectos/desplazame`), redirige con 301
+las direcciones antiguas con «.html», da la página 404 propia, comprime, pone la caché y las cabeceras de seguridad.
 
 ## Estructura
 
